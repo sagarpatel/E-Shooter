@@ -26,6 +26,13 @@ namespace E_Shooter
 
             // Frame rate is 30 fps by default for Windows Phone.
             TargetElapsedTime = TimeSpan.FromTicks(333333);
+
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 480;
+
+
+            graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight; 
+
         }
 
     
@@ -33,6 +40,18 @@ namespace E_Shooter
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // TODO: Add texture to texture manager here
+            //TextureManager.sharedTextureManager.addTexture(..)
+
+
+            InputManager.myGame = this;
+
+
+            Components.Add(InputManager.sharedInputManager);
+
 
             base.Initialize();
         }
@@ -61,10 +80,13 @@ namespace E_Shooter
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+           // if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+             //   this.Exit();
+
+
+            if (InputManager.sharedInputManager.getFlickDelta().Length() > 0)
                 this.Exit();
 
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
@@ -73,7 +95,7 @@ namespace E_Shooter
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
 
