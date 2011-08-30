@@ -21,6 +21,7 @@ namespace E_Shooter
 
         private Vector2 flickDelta;
         private Vector2 tapPosition;
+        private Vector2 touchPosition;
 
         private InputManager(Game game): base(game)
         {
@@ -45,6 +46,8 @@ namespace E_Shooter
         public override void Update(GameTime gameTime)
         {
 
+            // Handle Gestures
+
             while (TouchPanel.IsGestureAvailable)
             {
                 GestureSample gs = TouchPanel.ReadGesture();
@@ -60,6 +63,19 @@ namespace E_Shooter
 
                 }
             }
+
+            // Handle touch locations
+
+            TouchCollection touchCollection = TouchPanel.GetState();
+            foreach (TouchLocation thisTouchLocation in touchCollection)
+            {
+                if (thisTouchLocation.State == TouchLocationState.Pressed || thisTouchLocation.State == TouchLocationState.Moved)
+                {
+                    handleTouch(thisTouchLocation.Position);
+                }
+
+            }
+              
 
 
             base.Update(gameTime);
@@ -79,6 +95,10 @@ namespace E_Shooter
         {
             tapPosition = position;
         }
+        private void handleTouch(Vector2 position)
+        {
+            touchPosition = position;
+        }
         #endregion
 
 
@@ -94,6 +114,10 @@ namespace E_Shooter
         public Vector2 getTapPosition()
         {
             return tapPosition;
+        }
+        public Vector2 getTouchPosition()
+        {
+            return touchPosition;
         }
         #endregion
 

@@ -37,7 +37,7 @@ namespace E_Shooter
         public override void Update(GameTime gameTime)
         {
 
-            position = InputManager.sharedInputManager.getTapPosition();
+            position = InputManager.sharedInputManager.getTouchPosition();
 
             base.Update(gameTime);
         }
