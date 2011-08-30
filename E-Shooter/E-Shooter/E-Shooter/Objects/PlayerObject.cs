@@ -60,69 +60,69 @@ namespace E_Shooter
 
         //Custom functions
 
-        private Vector2 getEdgePosition(Vector2 playerPosition, Rectangle frameRectangle)
+        private Vector2 getEdgePosition(Vector2 inputPosition, Rectangle frameRectangle)
         {
 
             int deltaX;
             int deltaY;
 
             //Left half 
-            if (playerPosition.X < frameRectangle.Right / 2)
+            if (inputPosition.X < frameRectangle.Right / 2)
             {
-                deltaX = (int)playerPosition.X - frameRectangle.Left;
+                deltaX = (int)inputPosition.X - frameRectangle.Left;
 
                 // Top left Quadrant
-                if (playerPosition.Y < frameRectangle.Bottom / 2)
+                if (inputPosition.Y < frameRectangle.Bottom / 2)
                 {
-                    deltaY = (int)playerPosition.Y - frameRectangle.Top;
+                    deltaY = (int)inputPosition.Y - frameRectangle.Top;
                     //closer to left edge
                     if (deltaX < deltaY)
-                        return new Vector2(frameRectangle.Left, playerPosition.Y);
+                        return new Vector2(frameRectangle.Left, inputPosition.Y);
                     //closer to top edge 
                     else
-                        return new Vector2(playerPosition.X, frameRectangle.Top);
+                        return new Vector2(inputPosition.X, frameRectangle.Top);
                 }
 
                 // Bottom Left Quadrant
                 else
                 {
-                    deltaY = frameRectangle.Bottom - (int)playerPosition.Y;
+                    deltaY = frameRectangle.Bottom - (int)inputPosition.Y;
                     //closer to left edge
                     if (deltaX < deltaY)
-                        return new Vector2(frameRectangle.Left, playerPosition.Y);
+                        return new Vector2(frameRectangle.Left, inputPosition.Y);
                     //closer to bottom edge
                     else
-                        return new Vector2(playerPosition.X, frameRectangle.Bottom);
+                        return new Vector2(inputPosition.X, frameRectangle.Bottom);
                 }
             }
 
             //Right half
             else
             {
-                deltaX = frameRectangle.Right - (int)playerPosition.X;
+                deltaX = frameRectangle.Right - (int)inputPosition.X;
 
                 //Top Right Quadrant
-                if (playerPosition.Y > frameRectangle.Bottom / 2)
+                if (inputPosition.Y < frameRectangle.Bottom / 2)
                 {
-                    deltaY = (int)playerPosition.Y - frameRectangle.Top;
+                    deltaY = (int)inputPosition.Y - frameRectangle.Top;
                     //closer to right edge
                     if (deltaX < deltaY)
-                        return new Vector2(frameRectangle.Right, playerPosition.Y);
+                        return new Vector2(frameRectangle.Right, inputPosition.Y);
                     //closer to top edge
                     else
-                        return new Vector2(playerPosition.X, frameRectangle.Top);
+                        return new Vector2(inputPosition.X, frameRectangle.Top);
                 }
 
                 //Bottom Right Quadrant
                 else
                 {
-                    deltaY = frameRectangle.Bottom - (int)playerPosition.Y;
+                    deltaY = frameRectangle.Bottom - (int)inputPosition.Y;
                     //closer to right edge
                     if(deltaX < deltaY)
-                        return new Vector2(frameRectangle.Right, playerPosition.Y);
+                        return new Vector2(frameRectangle.Right, inputPosition.Y);
                     //closer to bottom edge
                     else
-                        return new Vector2(playerPosition.X, frameRectangle.Bottom);
+                        return new Vector2(inputPosition.X, frameRectangle.Bottom);
                 }
 
             }
