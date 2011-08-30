@@ -93,10 +93,7 @@ namespace E_Shooter
         }
         public Vector2 getTapPosition()
         {
-            Vector2 temp = tapPosition;
-            tapPosition = new Vector2(0, 0);
-
-            return temp;
+            return tapPosition;
         }
         #endregion
 

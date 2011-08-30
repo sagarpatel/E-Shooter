@@ -17,6 +17,7 @@ namespace E_Shooter
     {
 
         protected SpriteBatch spriteBatch;
+        public Texture2D texture;
 
         public bool isAlive;
 

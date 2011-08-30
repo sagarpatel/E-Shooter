@@ -19,6 +19,8 @@ namespace E_Shooter
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+      
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -44,14 +46,19 @@ namespace E_Shooter
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: Add texture to texture manager here
-            //TextureManager.sharedTextureManager.addTexture(..)
+            TextureManager.sharedTextureManager.addTexture("Player1Sprite", Content.Load<Texture2D>("Sprites/HalfCircle1"));
 
 
             InputManager.myGame = this;
 
+            GameFlowManager.myGame = this;
+            GameFlowManager.mySpriteBatch = spriteBatch;
+            GameFlowManager.sharedGameFlowManager.manualInit();
 
+      
             Components.Add(InputManager.sharedInputManager);
-
+            Components.Add(GameFlowManager.sharedGameFlowManager);
+      
 
             base.Initialize();
         }
@@ -60,8 +67,6 @@ namespace E_Shooter
 
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -98,8 +103,19 @@ namespace E_Shooter
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
+          //  GameFlowManager.sharedGameFlowManager.player1.spriteBatch = spriteBatch;
 
+           // spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+
+
+
+            //goes through all component's respective Draw() methods 
             base.Draw(gameTime);
+
+            spriteBatch.End();
+
         }
 
 
