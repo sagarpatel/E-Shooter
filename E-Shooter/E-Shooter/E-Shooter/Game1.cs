@@ -46,7 +46,7 @@ namespace E_Shooter
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: Add texture to texture manager here
-            TextureManager.sharedTextureManager.addTexture("Player1Sprite", Content.Load<Texture2D>("Sprites/HalfCircle1"));
+            TextureManager.sharedTextureManager.addTexture("Player1Sprite", Content.Load<Texture2D>("Sprites/FullCircle1"));
 
 
             InputManager.myGame = this;
@@ -89,8 +89,8 @@ namespace E_Shooter
              //   this.Exit();
 
 
-            if (InputManager.sharedInputManager.getFlickDelta().Length() > 0)
-                this.Exit();
+            //if (InputManager.sharedInputManager.getFlickDelta().Length() > 0)
+            //    this.Exit();
 
 
             base.Update(gameTime);
