@@ -18,6 +18,8 @@ namespace E_Shooter
     public class PlayerObject : GameObjectAbstract
     {
 
+        Vector2 facing;
+
         public PlayerObject(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
 
@@ -30,6 +32,7 @@ namespace E_Shooter
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
             position = new Vector2(0, 0);
+            facing = new Vector2(0, 0);
             
             base.LoadContent();
         }
@@ -41,7 +44,7 @@ namespace E_Shooter
 
             Rectangle phoneFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             
-            position = getEdgePosition(actualPosition, phoneFrame);
+            position = getEdgePosition_setFacing(actualPosition, phoneFrame);
 
 
             base.Update(gameTime);
@@ -60,7 +63,7 @@ namespace E_Shooter
 
         //Custom functions
 
-        private Vector2 getEdgePosition(Vector2 inputPosition, Rectangle frameRectangle)
+        private Vector2 getEdgePosition_setFacing(Vector2 inputPosition, Rectangle frameRectangle)
         {
 
             int deltaX;
@@ -77,10 +80,16 @@ namespace E_Shooter
                     deltaY = (int)inputPosition.Y - frameRectangle.Top;
                     //closer to left edge
                     if (deltaX < deltaY)
+                    {
+                        facing = new Vector2(1, 0);
                         return new Vector2(frameRectangle.Left, inputPosition.Y);
+                    }
                     //closer to top edge 
                     else
+                    {
+                        facing = new Vector2(0, 1);
                         return new Vector2(inputPosition.X, frameRectangle.Top);
+                    }
                 }
 
                 // Bottom Left Quadrant
@@ -89,10 +98,16 @@ namespace E_Shooter
                     deltaY = frameRectangle.Bottom - (int)inputPosition.Y;
                     //closer to left edge
                     if (deltaX < deltaY)
+                    {
+                        facing = new Vector2(1, 0);
                         return new Vector2(frameRectangle.Left, inputPosition.Y);
+                    }
                     //closer to bottom edge
                     else
+                    {
+                        facing = new Vector2(0, -1);
                         return new Vector2(inputPosition.X, frameRectangle.Bottom);
+                    }
                 }
             }
 
@@ -107,10 +122,16 @@ namespace E_Shooter
                     deltaY = (int)inputPosition.Y - frameRectangle.Top;
                     //closer to right edge
                     if (deltaX < deltaY)
+                    {
+                        facing = new Vector2(-1, 0);
                         return new Vector2(frameRectangle.Right, inputPosition.Y);
+                    }
                     //closer to top edge
                     else
+                    {
+                        facing = new Vector2(0, 1);
                         return new Vector2(inputPosition.X, frameRectangle.Top);
+                    }
                 }
 
                 //Bottom Right Quadrant
@@ -118,11 +139,17 @@ namespace E_Shooter
                 {
                     deltaY = frameRectangle.Bottom - (int)inputPosition.Y;
                     //closer to right edge
-                    if(deltaX < deltaY)
+                    if (deltaX < deltaY)
+                    {
+                        facing = new Vector2(-1, 0);
                         return new Vector2(frameRectangle.Right, inputPosition.Y);
+                    }
                     //closer to bottom edge
                     else
+                    {
+                        facing = new Vector2(0, -1);
                         return new Vector2(inputPosition.X, frameRectangle.Bottom);
+                    }
                 }
 
             }
