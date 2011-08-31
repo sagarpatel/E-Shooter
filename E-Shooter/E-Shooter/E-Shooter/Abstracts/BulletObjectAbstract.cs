@@ -19,13 +19,15 @@ namespace E_Shooter
     public abstract class BulletObjectAbstract : GameObjectAbstract
     {
 
-        public static int fireRate;
+        public static int fireCooldown;
         public static int speed;
+        public static float rateCounter;
 
         public BulletObjectAbstract(Game game, SpriteBatch givenSpriteBatch):base(game, givenSpriteBatch)
         {
-            fireRate = 100;
+            fireCooldown = 100;
             speed = 1;
+            rateCounter = 1;
 
         }
 

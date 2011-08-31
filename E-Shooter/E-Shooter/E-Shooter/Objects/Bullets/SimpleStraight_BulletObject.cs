@@ -29,7 +29,7 @@ namespace E_Shooter
             scale = 0.2f;
             color = Color.LawnGreen;
 
-            fireRate = 1000;
+            fireCooldown = 100;
             speed = 1;
 
             base.LoadContent();

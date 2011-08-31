@@ -174,10 +174,11 @@ namespace E_Shooter
         private void HandleWeapons(GameTime gameTime)
         {
             int intTime = (int)gameTime.TotalGameTime.TotalMilliseconds;
+            BulletObjectAbstract.rateCounter += gameTime.ElapsedGameTime.Milliseconds;
 
-            if ( intTime % 2 == 0)
+            if ( BulletObjectAbstract.rateCounter >= BulletObjectAbstract.fireCooldown)
             {
-
+                BulletObjectAbstract.rateCounter = 0;
 
                 // for weapon1
 
