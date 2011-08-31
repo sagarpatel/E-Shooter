@@ -17,6 +17,7 @@ namespace E_Shooter
     {
 
         protected SpriteBatch spriteBatch;
+        protected Game game;
         public Texture2D texture;
 
         public bool isAlive;
@@ -24,20 +25,30 @@ namespace E_Shooter
         public Vector2 position;
         public Vector2 velocity;
 
+        public Vector2 facing;
+
         public Vector2 origin;
 
+        public float rotation;
+        public float scale;
+        public Color color;
 
-        public GameObjectAbstract(Game game, SpriteBatch givenSpriteBatch):base(game)
+
+        public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch):base(givenGameame)
         {
 
             spriteBatch = givenSpriteBatch;
+            game = givenGameame;
 
             isAlive = false;
             position = new Vector2(0, 0);
             velocity = new Vector2(0, 0);
+            facing = new Vector2(0, 0);
 
+            color = Color.White;
             origin = new Vector2(0, 0);
-
+            rotation = 0f;
+            scale = 1f;
         }
 
 
@@ -68,10 +79,22 @@ namespace E_Shooter
 
         public override void Draw(GameTime gameTime)
         {
+            if (isAlive)
+                spriteBatch.Draw(texture, position, null, color, rotation, origin, scale, SpriteEffects.None, 0f);
+
             base.Draw(gameTime);
         }
 
+        // Custom functions
+        public bool isInsideScreen(Rectangle objectRectangle)
+        {
+            return (Game1.screenRectangle.Contains(objectRectangle));
+        }
 
+        public bool isIntersectingScreen(Rectangle objectRectangle)
+        {
+            return (Game1.screenRectangle.Intersects(objectRectangle));
+        }
 
     }
 

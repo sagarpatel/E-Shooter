@@ -19,7 +19,9 @@ namespace E_Shooter
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-      
+        public static int screenWidth;
+        public static int screenHeight;
+        public static Rectangle screenRectangle;
 
         public Game1()
         {
@@ -29,8 +31,12 @@ namespace E_Shooter
             // Frame rate is 30 fps by default for Windows Phone.
             TargetElapsedTime = TimeSpan.FromTicks(333333);
 
-            graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 480;
+            screenWidth = 800;
+            screenHeight = 480;
+            screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
+
+            graphics.PreferredBackBufferWidth = screenWidth;
+            graphics.PreferredBackBufferHeight = screenHeight;
 
 
             graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight; 

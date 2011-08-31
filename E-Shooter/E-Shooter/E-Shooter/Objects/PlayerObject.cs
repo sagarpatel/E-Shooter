@@ -18,7 +18,10 @@ namespace E_Shooter
     public class PlayerObject : GameObjectAbstract
     {
 
-        Vector2 facing;
+
+        SimpleStraight_BulletObject[] weapon1;
+        int maxWeapon1;
+
 
         public PlayerObject(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
@@ -33,18 +36,31 @@ namespace E_Shooter
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
             position = new Vector2(0, 0);
             facing = new Vector2(0, 0);
+            isAlive = true;
+
+            maxWeapon1 = 100;
+            weapon1 = new SimpleStraight_BulletObject[maxWeapon1];
+            for (int i = 0; i < maxWeapon1; ++i)
+            {
+                weapon1[i] = new SimpleStraight_BulletObject(game, spriteBatch);
+                Game.Components.Add(weapon1[i]);
+            }
+
             
             base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
-
+            //Update position
             Vector2 actualPosition = InputManager.sharedInputManager.getTouchPosition();
-
             Rectangle phoneFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-            
             position = getEdgePosition_setFacing(actualPosition, phoneFrame);
+
+
+            //Handle weapons
+
+            HandleWeapons(gameTime);
 
 
             base.Update(gameTime);
@@ -55,8 +71,6 @@ namespace E_Shooter
         {
 
            
-            spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, 1f, SpriteEffects.None, 0f);
-
             base.Draw(gameTime);
         }
 
@@ -152,6 +166,32 @@ namespace E_Shooter
                     }
                 }
 
+            }
+
+        }
+
+
+        private void HandleWeapons(GameTime gameTime)
+        {
+            int intTime = (int)gameTime.TotalGameTime.TotalMilliseconds;
+
+            if ( intTime % 2 == 0)
+            {
+
+
+                // for weapon1
+
+                foreach (SimpleStraight_BulletObject bullet in weapon1)
+                {
+                    if (!bullet.isAlive)
+                    {
+                        bullet.isAlive = true;
+                        bullet.facing = facing;
+                        bullet.position = position;
+                        break;
+                    }
+
+                }
             }
 
         }

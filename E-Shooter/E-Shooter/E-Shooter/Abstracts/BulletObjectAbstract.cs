@@ -14,43 +14,37 @@ using Microsoft.Xna.Framework.Media;
 
 namespace E_Shooter
 {
-    public class EnemyBaseObject : GameObjectAbstract
+
+
+    public abstract class BulletObjectAbstract : GameObjectAbstract
     {
 
-        public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch):base(game, givenSpriteBatch)
+        public static int fireRate;
+        public static int speed;
+
+        public BulletObjectAbstract(Game game, SpriteBatch givenSpriteBatch):base(game, givenSpriteBatch)
         {
+            fireRate = 100;
+            speed = 1;
 
         }
-
 
         protected override void LoadContent()
         {
-
-            texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
-            origin = new Vector2(texture.Width / 2, texture.Height / 2);
-            position = new Vector2(0, 0);
-            color = Color.HotPink;
-            isAlive = true;
-
             base.LoadContent();
         }
 
+
         public override void Update(GameTime gameTime)
         {
-
-            position = new Vector2(100, 100);
-
             base.Update(gameTime);
         }
 
 
-        public override void Draw(GameTime gameTime)
-        {
-        
-            base.Draw(gameTime);
-        }
-
 
 
     }
+
+
+
 }
