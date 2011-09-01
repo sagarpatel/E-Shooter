@@ -98,10 +98,14 @@ namespace E_Shooter
             return (Game1.screenRectangle.Intersects(myRect));
         }
 
-        public bool isColliding(Rectangle otherObjRect)
+        // larger object must passed as otherObjRect
+        public bool isCollidingOtherObject(Rectangle otherObjRect)
         {
             Rectangle myRect = new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * scale), (int)(texture.Height * scale));
-            return (otherObjRect.Intersects(myRect));
+            if (otherObjRect.Intersects(myRect) || otherObjRect.Contains(myRect))
+                return true;
+            else
+                return false;
                         
         }
 

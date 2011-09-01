@@ -81,5 +81,10 @@ namespace E_Shooter
             base.Update(gameTime);
         }
 
+        public ScreenAbstract getCurrentScreen()
+        {
+            return screenList[currentScreenIndex];
+        }
+
     }
 }

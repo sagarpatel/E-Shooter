@@ -20,6 +20,7 @@ namespace E_Shooter
         public MainMenu(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch);
+            collisionList.Add(enemyBase1);
         }
 
 

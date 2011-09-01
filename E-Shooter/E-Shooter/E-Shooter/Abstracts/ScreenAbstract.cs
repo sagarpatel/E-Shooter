@@ -23,6 +23,7 @@ namespace E_Shooter
 
         protected SpriteBatch spriteBatch;
 
+        public List<GameObjectAbstract> collisionList;
 
         public ScreenAbstract(Game game, SpriteBatch givenSpriteBatch):base(game)
         {
@@ -30,6 +31,7 @@ namespace E_Shooter
             isActive = false;
             isLoaded = false;
             isComplete = false;
+            collisionList = new List<GameObjectAbstract>();
 
         }
 

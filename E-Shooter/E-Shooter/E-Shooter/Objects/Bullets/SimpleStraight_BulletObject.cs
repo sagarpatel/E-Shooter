@@ -47,8 +47,22 @@ namespace E_Shooter
                 if (!isInsideScreen() && !isIntersectingScreen())
                     isAlive = false;
 
+                if (isAlive)
+                {
+                    List<GameObjectAbstract> collList = GameFlowManager.sharedGameFlowManager.getCurrentScreen().collisionList;
 
-
+                    foreach (GameObjectAbstract collObj in collList)
+                    {
+                        if (collObj.isAlive)
+                        {
+                            if (collObj.isCollidingOtherObject(myRect))
+                            {
+                                collObj.isAlive = false;
+                                this.isAlive = false;
+                            }
+                        }
+                    }
+                }
             }
 
             
