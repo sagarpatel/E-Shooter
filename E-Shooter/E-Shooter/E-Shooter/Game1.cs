@@ -61,6 +61,7 @@ namespace E_Shooter
             GameFlowManager.mySpriteBatch = spriteBatch;
             GameFlowManager.sharedGameFlowManager.manualInit();
 
+
       
             Components.Add(InputManager.sharedInputManager);
             Components.Add(GameFlowManager.sharedGameFlowManager);

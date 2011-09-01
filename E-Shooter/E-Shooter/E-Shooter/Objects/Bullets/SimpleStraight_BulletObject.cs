@@ -44,9 +44,14 @@ namespace E_Shooter
                 updatePV(gameTime);
                 //Handle leaving screen
                 Rectangle myRect = new Rectangle((int)position.X, (int)position.Y, texture.Width/2, texture.Height/2);
-                if (!isInsideScreen(myRect) && !isIntersectingScreen(myRect))
+                if (!isInsideScreen() && !isIntersectingScreen())
                     isAlive = false;
+
+
+
             }
+
+            
            
           
 

@@ -23,9 +23,13 @@ namespace E_Shooter
         public PlayerObject player1;
         public MainMenu mainMenu;
 
+        List<ScreenAbstract> screenList;
+        int currentScreenIndex;
+
         private GameFlowManager(Game game, SpriteBatch mySpriteBatch): base(game)
         {
-            
+            screenList = new List<ScreenAbstract>();
+            currentScreenIndex = 0;
         }
 
         public static GameFlowManager sharedGameFlowManager
@@ -47,12 +51,13 @@ namespace E_Shooter
         {
 
             player1 = new PlayerObject(myGame, mySpriteBatch);
+            myGame.Components.Add(player1);
 
             mainMenu = new MainMenu(myGame, mySpriteBatch);
-
-            myGame.Components.Add(player1);
+            mainMenu.isActive = true;
+            screenList.Add(mainMenu);
             myGame.Components.Add(mainMenu);
-            
+           
 
         }
 
@@ -60,6 +65,18 @@ namespace E_Shooter
         public override void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
+            ScreenAbstract currentScreen = screenList[currentScreenIndex];
+            if ( currentScreen.isComplete == true)
+            {
+                myGame.Components.Remove(currentScreen);
+                currentScreen.Dispose();
+
+                currentScreenIndex ++;
+
+                ScreenAbstract newScreen = screenList[currentScreenIndex];
+                newScreen.isActive = true;
+                myGame.Components.Add(newScreen);
+            }
 
             base.Update(gameTime);
         }

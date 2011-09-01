@@ -19,6 +19,7 @@ namespace E_Shooter
     {
         public bool isActive;
         public bool isLoaded;
+        public bool isComplete;
 
         protected SpriteBatch spriteBatch;
 
@@ -28,6 +29,7 @@ namespace E_Shooter
             spriteBatch = givenSpriteBatch;
             isActive = false;
             isLoaded = false;
+            isComplete = false;
 
         }
 
@@ -40,7 +42,9 @@ namespace E_Shooter
 
         protected override void LoadContent()
         {
+            
             base.LoadContent();
+            isLoaded = true;
         }
 
         protected virtual void UnloadContent()

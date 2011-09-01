@@ -86,14 +86,23 @@ namespace E_Shooter
         }
 
         // Custom functions
-        public bool isInsideScreen(Rectangle objectRectangle)
+        public bool isInsideScreen()
         {
-            return (Game1.screenRectangle.Contains(objectRectangle));
+            Rectangle myRect = new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * scale), (int)(texture.Height * scale));
+            return (Game1.screenRectangle.Contains(myRect));
         }
 
-        public bool isIntersectingScreen(Rectangle objectRectangle)
+        public bool isIntersectingScreen()
         {
-            return (Game1.screenRectangle.Intersects(objectRectangle));
+            Rectangle myRect = new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * scale), (int)(texture.Height * scale));
+            return (Game1.screenRectangle.Intersects(myRect));
+        }
+
+        public bool isColliding(Rectangle otherObjRect)
+        {
+            Rectangle myRect = new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * scale), (int)(texture.Height * scale));
+            return (otherObjRect.Intersects(myRect));
+                        
         }
 
     }
