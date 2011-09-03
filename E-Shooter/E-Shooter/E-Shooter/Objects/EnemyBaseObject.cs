@@ -43,6 +43,7 @@ namespace E_Shooter
                 unitsArray[i].position = position;
                 unitsArray[i].isHoming = true;
                 unitsArray[i].homingSpeed = 0.1f;
+                GameFlowManager.sharedGameFlowManager.getCurrentScreen().collisionList.Add(unitsArray[i]);
                 Game.Components.Add(unitsArray[i]);
             }
 

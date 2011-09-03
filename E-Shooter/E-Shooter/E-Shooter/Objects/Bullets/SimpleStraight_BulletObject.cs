@@ -60,6 +60,7 @@ namespace E_Shooter
                                 collObj.isAlive = false;
                                 this.isAlive = false;
                             }
+
                         }
                     }
                 }
