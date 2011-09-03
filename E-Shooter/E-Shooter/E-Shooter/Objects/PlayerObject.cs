@@ -181,7 +181,7 @@ namespace E_Shooter
                 BulletObjectAbstract.rateCounter = 0;
 
                 // for weapon1
-
+                
                 foreach (SimpleStraight_BulletObject bullet in weapon1)
                 {
                     if (!bullet.isAlive)
@@ -196,6 +196,9 @@ namespace E_Shooter
             }
 
         }
+
+        
+          
 
 
     }

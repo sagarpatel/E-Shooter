@@ -17,9 +17,12 @@ namespace E_Shooter
     public class EnemyBaseObject : GameObjectAbstract
     {
 
-        public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch):base(game, givenSpriteBatch)
-        {
+        public int maxUnits;
+        public EnemyUnitObject[] unitsArray;
 
+        public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch, int maximumUnitCount):base(game, givenSpriteBatch)
+        {
+            maxUnits = maximumUnitCount;
         }
 
 
@@ -28,17 +31,28 @@ namespace E_Shooter
 
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
             origin = new Vector2((texture.Width / 2 )* scale, (texture.Height / 2) * scale);
-            position = new Vector2(0, 0);
+            position = new Vector2(200, 200);
             color = Color.HotPink;
             isAlive = true;
+
+            unitsArray = new EnemyUnitObject[maxUnits];
+            for (int i = 0; i < maxUnits; ++i)
+            {
+                unitsArray[i] = new EnemyUnitObject(game, spriteBatch);
+                unitsArray[i].isAlive = false;
+                unitsArray[i].position = position;
+                unitsArray[i].isHoming = true;
+                unitsArray[i].homingSpeed = 0.1f;
+                Game.Components.Add(unitsArray[i]);
+            }
+
 
             base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
-
-            position = new Vector2(200, 200);
+            spawnUnits();
 
             base.Update(gameTime);
         }
@@ -51,6 +65,20 @@ namespace E_Shooter
         }
 
 
+        public void spawnUnits()
+        {
+            for (int i = 0; i < maxUnits; ++i)
+            {
+                if (unitsArray[i].isAlive == false)
+                {
+                    unitsArray[i].position = new Vector2(400,200);
+                    unitsArray[i].isAlive = true;
+                    unitsArray[i].isHoming = true;
+                    break;
+                }
+
+            }
+        }
 
     }
 }

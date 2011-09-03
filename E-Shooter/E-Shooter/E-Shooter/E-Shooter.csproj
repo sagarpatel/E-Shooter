@@ -92,6 +92,7 @@
     <Compile Include="Managers\TextureManager.cs" />
     <Compile Include="Abstracts\BulletObjectAbstract.cs" />
     <Compile Include="Objects\EnemyBaseObject.cs" />
+    <Compile Include="Objects\EnemyUnitObject.cs" />
     <Compile Include="Objects\PlayerObject.cs" />
     <Compile Include="Objects\Bullets\SimpleStraight_BulletObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
