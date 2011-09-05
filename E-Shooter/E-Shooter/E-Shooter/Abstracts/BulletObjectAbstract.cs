@@ -23,11 +23,14 @@ namespace E_Shooter
         public static int speed;
         public static float rateCounter;
 
+        public int damagePoints;
+
         public BulletObjectAbstract(Game game, SpriteBatch givenSpriteBatch):base(game, givenSpriteBatch)
         {
             fireCooldown = 100;
             speed = 1;
             rateCounter = 1;
+            damagePoints = 10;
 
         }
 

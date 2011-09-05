@@ -32,6 +32,7 @@ namespace E_Shooter
             color = Color.Yellow;
             isAlive = false;
             isHoming = false;
+            HP = 10;
 
 
             base.LoadContent();

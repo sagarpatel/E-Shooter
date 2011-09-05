@@ -35,6 +35,8 @@ namespace E_Shooter
 
         public bool isWallBounce;
 
+        public int HP;
+
 
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch):base(givenGameame)
         {
@@ -53,6 +55,8 @@ namespace E_Shooter
             scale = 1f;
 
             isWallBounce = true;
+
+            HP = 100;
         }
 
 
@@ -83,6 +87,12 @@ namespace E_Shooter
             if (isWallBounce)
                 wallBounce();
 
+
+            if (HP <= 0)
+                this.isAlive = false;
+
+            if (isAlive == false)
+                this.reset();
 
             base.Update(gameTime);
         }

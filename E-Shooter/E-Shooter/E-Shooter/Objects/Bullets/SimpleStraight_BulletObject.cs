@@ -57,10 +57,10 @@ namespace E_Shooter
                         {
                             if (collObj.isCollidingOtherObject(myRect))
                             {
-                                collObj.isAlive = false;
+                                collObj.HP = collObj.HP - this.damagePoints;
                                 this.isAlive = false;
                                 this.reset();
-                                collObj.reset();
+                                
                                 continue;
                             }
 
