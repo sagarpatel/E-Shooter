@@ -26,10 +26,13 @@ namespace E_Shooter
         List<ScreenAbstract> screenList;
         int currentScreenIndex;
 
+        Random rand;
+
         private GameFlowManager(Game game, SpriteBatch mySpriteBatch): base(game)
         {
             screenList = new List<ScreenAbstract>();
             currentScreenIndex = 0;
+            rand = new Random();
         }
 
         public static GameFlowManager sharedGameFlowManager
@@ -84,6 +87,16 @@ namespace E_Shooter
         public ScreenAbstract getCurrentScreen()
         {
             return screenList[currentScreenIndex];
+        }
+
+        public Vector2 getRandomVector(int targetAngle, int coneArc)
+        {
+            int maxAngle = targetAngle + coneArc / 2;
+            int minAngle = targetAngle - coneArc / 2;
+            int randomAngle = rand.Next(minAngle, maxAngle);
+            Vector2 randomVector = new Vector2(0, 1);
+            randomVector = Vector2.Transform(randomVector, Matrix.CreateRotationZ(MathHelper.ToRadians((float)randomAngle)));
+            return randomVector;
         }
 
     }

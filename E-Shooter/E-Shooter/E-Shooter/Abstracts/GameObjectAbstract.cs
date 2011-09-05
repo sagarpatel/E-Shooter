@@ -116,6 +116,12 @@ namespace E_Shooter
                         
         }
 
+        public void reset()
+        {
+            this.position = new Vector2(0, 0);
+            this.velocity = new Vector2(0, 0);
+            this.rotation = 0f;
+        }
     }
 
 }

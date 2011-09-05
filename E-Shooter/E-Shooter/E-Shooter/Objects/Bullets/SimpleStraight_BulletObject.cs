@@ -29,7 +29,7 @@ namespace E_Shooter
             scale = 0.2f;
             color = Color.LawnGreen;
 
-            fireCooldown = 100;
+            fireCooldown = 400;
             speed = 1;
 
             base.LoadContent();
@@ -59,6 +59,9 @@ namespace E_Shooter
                             {
                                 collObj.isAlive = false;
                                 this.isAlive = false;
+                                this.reset();
+                                collObj.reset();
+                                continue;
                             }
 
                         }
@@ -67,9 +70,7 @@ namespace E_Shooter
 
             }
 
-            
-           
-          
+                      
 
             base.Update(gameTime);
         }

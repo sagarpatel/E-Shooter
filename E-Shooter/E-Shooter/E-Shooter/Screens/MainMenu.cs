@@ -19,7 +19,9 @@ namespace E_Shooter
 
         public MainMenu(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
-            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch,10);
+            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch,20);
+            enemyBase1.position = new Vector2(400, 240);
+            enemyBase1.spawnInitialExpulsionSpeed = 50f;
             collisionList.Add(enemyBase1);
         }
 

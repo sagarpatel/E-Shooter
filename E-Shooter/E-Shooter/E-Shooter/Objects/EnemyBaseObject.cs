@@ -19,10 +19,14 @@ namespace E_Shooter
 
         public int maxUnits;
         public EnemyUnitObject[] unitsArray;
+        public float spawnInitialExpulsionSpeed;
+        public int spawnCounter;
+        public int spawnCooldown;
 
         public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch, int maximumUnitCount):base(game, givenSpriteBatch)
         {
             maxUnits = maximumUnitCount;
+            spawnCooldown = 500;
         }
 
 
@@ -31,7 +35,6 @@ namespace E_Shooter
 
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
             origin = new Vector2((texture.Width / 2 )* scale, (texture.Height / 2) * scale);
-            position = new Vector2(200, 200);
             color = Color.HotPink;
             isAlive = true;
 
@@ -42,7 +45,8 @@ namespace E_Shooter
                 unitsArray[i].isAlive = false;
                 unitsArray[i].position = position;
                 unitsArray[i].isHoming = true;
-                unitsArray[i].homingSpeed = 0.1f;
+                unitsArray[i].homingSpeed = 0.05f;
+                unitsArray[i].scale = 0.5f;
                 GameFlowManager.sharedGameFlowManager.getCurrentScreen().collisionList.Add(unitsArray[i]);
                 Game.Components.Add(unitsArray[i]);
             }
@@ -53,7 +57,10 @@ namespace E_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            spawnUnits();
+            if (this.isAlive)
+                handleSpawning(gameTime);
+
+
 
             base.Update(gameTime);
         }
@@ -66,19 +73,35 @@ namespace E_Shooter
         }
 
 
-        public void spawnUnits()
+        public void spawnUnit()
         {
             for (int i = 0; i < maxUnits; ++i)
             {
                 if (unitsArray[i].isAlive == false)
                 {
-                    unitsArray[i].position = new Vector2(400,200);
+                    unitsArray[i].position = this.position;
+                    unitsArray[i].velocity = GameFlowManager.sharedGameFlowManager.getRandomVector(0, 360) * spawnInitialExpulsionSpeed;
                     unitsArray[i].isAlive = true;
                     unitsArray[i].isHoming = true;
                     break;
                 }
 
             }
+        }
+
+        private void handleSpawning(GameTime gameTime)
+        {
+            int intTime = (int)gameTime.TotalGameTime.TotalMilliseconds;
+            spawnCounter += gameTime.ElapsedGameTime.Milliseconds;
+
+            if (spawnCounter >= spawnCooldown)
+            {
+                spawnCounter = 0;
+
+                spawnUnit();
+
+            }
+
         }
 
     }
