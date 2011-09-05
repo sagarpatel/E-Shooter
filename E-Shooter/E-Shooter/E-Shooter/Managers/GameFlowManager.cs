@@ -22,6 +22,7 @@ namespace E_Shooter
 
         public PlayerObject player1;
         public MainMenu mainMenu;
+        public Level1 level1;
 
         List<ScreenAbstract> screenList;
         int currentScreenIndex;
@@ -60,6 +61,12 @@ namespace E_Shooter
             mainMenu.isActive = true;
             screenList.Add(mainMenu);
             myGame.Components.Add(mainMenu);
+
+            level1 = new Level1(myGame, mySpriteBatch);
+            level1.isActive = false;
+            screenList.Add(level1);
+
+
            
 
         }

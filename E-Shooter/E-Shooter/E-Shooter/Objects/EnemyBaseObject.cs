@@ -28,14 +28,9 @@ namespace E_Shooter
         {
             maxUnits = maximumUnitCount;
             spawnCooldown = 200;
-        }
-
-
-        protected override void LoadContent()
-        {
 
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
-            origin = new Vector2((texture.Width / 2 )* scale, (texture.Height / 2) * scale);
+            origin = new Vector2((texture.Width / 2) * scale, (texture.Height / 2) * scale);
             color = Color.HotPink;
             isAlive = true;
 
@@ -46,11 +41,22 @@ namespace E_Shooter
                 unitsArray[i].isAlive = false;
                 unitsArray[i].position = position;
                 unitsArray[i].isHoming = true;
-                unitsArray[i].homingSpeed = 0.05f;
+                //  unitsArray[i].homingSpeed = 0.05f;
                 unitsArray[i].scale = 0.5f;
-                GameFlowManager.sharedGameFlowManager.getCurrentScreen().collisionList.Add(unitsArray[i]);
+                
                 Game.Components.Add(unitsArray[i]);
             }
+        }
+
+
+        protected override void LoadContent()
+        {
+
+            
+
+            for (int i=0; i< maxUnits ; ++i)
+                GameFlowManager.sharedGameFlowManager.getCurrentScreen().collisionList.Add(unitsArray[i]);
+            
 
 
             base.LoadContent();
@@ -88,6 +94,13 @@ namespace E_Shooter
             base.Draw(gameTime);
         }
 
+        public void setUnitsHomingSpeed(float homingSpeedToSet)
+        {
+            for (int i = 0; i < maxUnits; i++)
+            {
+                unitsArray[i].homingSpeed = homingSpeedToSet;
+            }
+        }
 
         public void spawnUnit()
         {
@@ -119,6 +132,7 @@ namespace E_Shooter
             }
 
         }
+
 
     }
 }

@@ -19,9 +19,10 @@ namespace E_Shooter
 
         public MainMenu(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
-            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch,20);
+            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch,5);
             enemyBase1.position = new Vector2(400, 240);
             enemyBase1.spawnInitialExpulsionSpeed = 100f;
+            
             collisionList.Add(enemyBase1);
         }
 
@@ -32,7 +33,7 @@ namespace E_Shooter
 
             base.LoadContent();
 
-            
+            enemyBase1.setUnitsHomingSpeed(0.05f);
             Game.Components.Add(enemyBase1);
 
             isLoaded = true;
@@ -46,6 +47,7 @@ namespace E_Shooter
 
         public override void Update(GameTime gameTime)
         {
+            
             // check is level is over
             if (enemyBase1.isCompleted)
                 this.isComplete = true;
