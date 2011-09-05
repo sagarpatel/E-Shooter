@@ -33,6 +33,8 @@ namespace E_Shooter
         public float scale;
         public Color color;
 
+        public bool isWallBounce;
+
 
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch):base(givenGameame)
         {
@@ -49,6 +51,8 @@ namespace E_Shooter
             origin = new Vector2(0, 0);
             rotation = 0f;
             scale = 1f;
+
+            isWallBounce = true;
         }
 
 
@@ -76,6 +80,10 @@ namespace E_Shooter
 
         public override void Update(GameTime gameTime)
         {
+            if (isWallBounce)
+                wallBounce();
+
+
             base.Update(gameTime);
         }
 
@@ -124,6 +132,19 @@ namespace E_Shooter
             this.position = new Vector2(0, 0);
             this.velocity = new Vector2(0, 0);
             this.rotation = 0f;
+        }
+
+        private void wallBounce()
+        {
+            float leftBound = this.position.X - this.texture.Width/2;
+            float rightBound = this.position.X + this.texture.Width/2;
+            float topBound = this.position.Y - this.texture.Height/2;
+            float bottomBound = this.position.Y + this.texture.Height/2;
+
+            if (leftBound <= 0 || rightBound >= Game1.screenWidth)
+                this.velocity.X = -this.velocity.X;
+            if (topBound <= 0 || bottomBound > Game1.screenHeight)
+                this.velocity.Y = -this.velocity.Y;
         }
     }
 
