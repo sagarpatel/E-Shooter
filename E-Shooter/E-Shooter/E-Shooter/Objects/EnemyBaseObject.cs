@@ -22,11 +22,12 @@ namespace E_Shooter
         public float spawnInitialExpulsionSpeed;
         public int spawnCounter;
         public int spawnCooldown;
+        public bool isCompleted;
 
         public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch, int maximumUnitCount):base(game, givenSpriteBatch)
         {
             maxUnits = maximumUnitCount;
-            spawnCooldown = 500;
+            spawnCooldown = 200;
         }
 
 
@@ -60,7 +61,22 @@ namespace E_Shooter
             if (this.isAlive)
                 handleSpawning(gameTime);
 
+            if (this.isAlive == false)
+            {
+                for (int i = 0; i < maxUnits; ++i)
+                {
+                    if (unitsArray[i].isAlive)
+                    {
+                        this.isCompleted = false;
+                        break;
+                    }
+                    else
+                    {
+                        this.isCompleted = true;
+                    }
 
+                }
+            }
 
             base.Update(gameTime);
         }

@@ -21,7 +21,7 @@ namespace E_Shooter
         {
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch,20);
             enemyBase1.position = new Vector2(400, 240);
-            enemyBase1.spawnInitialExpulsionSpeed = 50f;
+            enemyBase1.spawnInitialExpulsionSpeed = 100f;
             collisionList.Add(enemyBase1);
         }
 
@@ -36,6 +36,21 @@ namespace E_Shooter
             Game.Components.Add(enemyBase1);
 
             isLoaded = true;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            enemyBase1.Dispose();
+            base.Dispose(disposing);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            // check is level is over
+            if (enemyBase1.isCompleted)
+                this.isComplete = true;
+
+            base.Update(gameTime);
         }
 
 

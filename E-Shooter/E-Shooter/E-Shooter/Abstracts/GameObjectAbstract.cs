@@ -64,9 +64,12 @@ namespace E_Shooter
         }
 
 
-        protected virtual void UnloadContent()
+        protected override void Dispose(bool disposing)
         {
-            base.UnloadContent();
+            texture.Dispose();
+            spriteBatch.Dispose();
+            game.Dispose();
+            base.Dispose(disposing);
         }
 
 

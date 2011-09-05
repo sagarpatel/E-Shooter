@@ -72,17 +72,29 @@ namespace E_Shooter
             if ( currentScreen.isComplete == true)
             {
                 myGame.Components.Remove(currentScreen);
-                currentScreen.Dispose();
+              //  currentScreen.Dispose();
 
                 currentScreenIndex ++;
 
-                ScreenAbstract newScreen = screenList[currentScreenIndex];
-                newScreen.isActive = true;
-                myGame.Components.Add(newScreen);
+                if (currentScreenIndex < screenList.Count)
+                {
+                    ScreenAbstract newScreen = screenList[currentScreenIndex];
+                    newScreen.isActive = true;
+                    myGame.Components.Add(newScreen);
+                }
+                else
+                {
+                    currentScreenIndex --;
+                }
+                
             }
 
             base.Update(gameTime);
         }
+
+
+
+        //Custom functions
 
         public ScreenAbstract getCurrentScreen()
         {
