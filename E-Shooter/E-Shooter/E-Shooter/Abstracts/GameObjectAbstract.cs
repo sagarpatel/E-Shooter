@@ -35,7 +35,8 @@ namespace E_Shooter
 
         public bool isWallBounce;
 
-        public int HP;
+        public int currentHP;
+        public int initialHP;
 
 
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch):base(givenGameame)
@@ -56,7 +57,8 @@ namespace E_Shooter
 
             isWallBounce = true;
 
-            HP = 100;
+            initialHP = 100;
+            currentHP = initialHP;
         }
 
 
@@ -88,7 +90,7 @@ namespace E_Shooter
                 wallBounce();
 
 
-            if (HP <= 0)
+            if (currentHP <= 0)
                 this.isAlive = false;
 
             if (isAlive == false)
@@ -142,6 +144,7 @@ namespace E_Shooter
             this.position = new Vector2(0, 0);
             this.velocity = new Vector2(0, 0);
             this.rotation = 0f;
+            this.currentHP = this.initialHP;
         }
 
         private void wallBounce()

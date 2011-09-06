@@ -46,6 +46,9 @@ namespace E_Shooter
                 
                 Game.Components.Add(unitsArray[i]);
             }
+
+            initialHP = 100;
+            currentHP = initialHP;
         }
 
 
