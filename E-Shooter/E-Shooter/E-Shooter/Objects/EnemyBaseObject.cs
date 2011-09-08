@@ -35,7 +35,7 @@ namespace E_Shooter
             spawnCooldown = 200;
 
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
-            origin = new Vector2((texture.Width / 2) * scale, (texture.Height / 2) * scale);
+            
             color = Color.HotPink;
             isAlive = true;
 

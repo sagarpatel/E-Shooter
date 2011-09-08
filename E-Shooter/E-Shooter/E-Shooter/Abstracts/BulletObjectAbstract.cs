@@ -20,7 +20,7 @@ namespace E_Shooter
     {
 
         public static int fireCooldown;
-        public static int speed;
+        public static float speed;
         public static float rateCounter;
 
         public int damagePoints;

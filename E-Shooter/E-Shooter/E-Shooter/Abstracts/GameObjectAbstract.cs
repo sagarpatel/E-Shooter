@@ -71,6 +71,8 @@ namespace E_Shooter
 
         protected override void LoadContent()
         {
+            origin = new Vector2((texture.Width / 2) * scale, (texture.Height / 2) * scale);
+
             base.LoadContent();
         }
 

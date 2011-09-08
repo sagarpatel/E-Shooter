@@ -33,7 +33,7 @@ namespace E_Shooter
         {
 
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
-            origin = new Vector2(texture.Width / 2, texture.Height / 2);
+         
             position = new Vector2(0, 0);
             facing = new Vector2(0, 0);
             isAlive = true;

@@ -25,7 +25,7 @@ namespace E_Shooter
         {
 
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
-            origin = new Vector2((texture.Width / 2) * scale, (texture.Height / 2) * scale);
+            
             position = new Vector2(-100, -100);
             color = Color.Yellow;
             isAlive = false;
