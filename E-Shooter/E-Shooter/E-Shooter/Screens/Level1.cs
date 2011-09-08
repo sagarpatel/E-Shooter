@@ -33,12 +33,12 @@ namespace E_Shooter
 
             collisionList.Add(enemyBase1);
 
-            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 30);
+            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 20);
             enemyBase2.position = new Vector2(250, 240);
             enemyBase2.spawnInitialExpulsionSpeed = 150f;
             enemyBase2.color = Color.BlueViolet;
             enemyBase2.scale = 0.7f;
-            enemyBase1.setUnitsHomingSpeed(0.2f);
+            enemyBase2.setUnitsHomingSpeed(0.75f);
             enemyBase2.isAlive = false;
             enemyBase2.isStarted = false;
 

@@ -52,17 +52,19 @@ namespace E_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            //Update position
-            Vector2 actualPosition = InputManager.sharedInputManager.getTouchPosition();
-            Rectangle phoneFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-            position = getEdgePosition_setFacing(actualPosition, phoneFrame);
+            if (this.isAlive)
+            {
+                //Update position
+                Vector2 actualPosition = InputManager.sharedInputManager.getTouchPosition();
+                Rectangle phoneFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+                position = getEdgePosition_setFacing(actualPosition, phoneFrame);
 
 
-            //Handle weapons
+                //Handle weapons
 
-            HandleWeapons(gameTime);
+                HandleWeapons(gameTime);
 
-
+            }
             base.Update(gameTime);
         }
 

@@ -19,13 +19,11 @@ namespace E_Shooter
         public bool isHoming;
         public float homingSpeed;
 
+        public int damageToPlayer;
+
         public EnemyUnitObject(Game game, SpriteBatch givenSpriteb):base(game, givenSpriteb)
         {
 
-        }
-
-        protected override void LoadContent()
-        {
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
             origin = new Vector2((texture.Width / 2) * scale, (texture.Height / 2) * scale);
             position = new Vector2(-100, -100);
@@ -35,12 +33,32 @@ namespace E_Shooter
             initialHP = 10;
             currentHP = initialHP;
 
+            damageToPlayer = 10;
+
+        }
+
+        protected override void LoadContent()
+        {
+            
+
             base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
-            updatePV(gameTime);
+            if (isAlive)
+            {
+                updatePV(gameTime);
+
+
+                if(GameFlowManager.sharedGameFlowManager.player1.isCollidingOtherObject(this.getRect()))
+                {
+                    GameFlowManager.sharedGameFlowManager.player1.currentHP -= damageToPlayer;
+                    this.isAlive = false;
+                }
+                
+
+            }
 
             base.Update(gameTime);
         }

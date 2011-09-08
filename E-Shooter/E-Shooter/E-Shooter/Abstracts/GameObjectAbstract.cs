@@ -87,12 +87,15 @@ namespace E_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            if (isWallBounce)
-                wallBounce();
+            if (this.isAlive)
+            {
+                if (isWallBounce)
+                    wallBounce();
 
 
-            if (currentHP <= 0)
-                this.isAlive = false;
+                if (currentHP <= 0)
+                    this.isAlive = false;
+            }
 
             if (isAlive == false)
                 this.reset();

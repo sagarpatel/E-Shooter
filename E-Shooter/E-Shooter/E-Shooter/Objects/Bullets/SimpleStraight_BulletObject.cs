@@ -61,7 +61,7 @@ namespace E_Shooter
                                 this.isAlive = false;
                                 this.reset();
                                 
-                                continue;
+                               // continue;
                             }
 
                         }
