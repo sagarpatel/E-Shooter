@@ -24,6 +24,11 @@ namespace E_Shooter
         public int spawnCooldown;
         public bool isCompleted;
 
+        public int spawnTargetAngle;
+        public int spawnConeArc;
+
+        public bool isStarted;
+
         public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch, int maximumUnitCount):base(game, givenSpriteBatch)
         {
             maxUnits = maximumUnitCount;
@@ -42,13 +47,18 @@ namespace E_Shooter
                 unitsArray[i].position = position;
                 unitsArray[i].isHoming = true;
                 //  unitsArray[i].homingSpeed = 0.05f;
-                unitsArray[i].scale = 0.5f;
+                unitsArray[i].scale = 0.4f;
                 
                 Game.Components.Add(unitsArray[i]);
             }
 
             initialHP = 100;
             currentHP = initialHP;
+
+            spawnTargetAngle = 0;
+            spawnConeArc = 360;
+
+            isStarted = false;
         }
 
 
@@ -67,27 +77,37 @@ namespace E_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            if (this.isAlive)
-                handleSpawning(gameTime);
-
-            if (this.isAlive == false)
+            if (isStarted)
             {
-                for (int i = 0; i < maxUnits; ++i)
+
+                if (this.isAlive)
+                    handleSpawning(gameTime);
+
+                if (this.isAlive == false)
                 {
-                    if (unitsArray[i].isAlive)
+                    for (int i = 0; i < maxUnits; ++i)
                     {
-                        this.isCompleted = false;
-                        break;
-                    }
-                    else
-                    {
-                        this.isCompleted = true;
+                        if (unitsArray[i].isAlive)
+                        {
+                            this.isCompleted = false;
+                            break;
+                        }
+                        else
+                        {
+                            this.isCompleted = true;
+                            
+                        }
+
                     }
 
+                    if(this.isCompleted)
+                        this.isStarted = false;
                 }
+
+                base.Update(gameTime);
             }
 
-            base.Update(gameTime);
+            
         }
 
 
@@ -112,7 +132,7 @@ namespace E_Shooter
                 if (unitsArray[i].isAlive == false)
                 {
                     unitsArray[i].position = this.position;
-                    unitsArray[i].velocity = GameFlowManager.sharedGameFlowManager.getRandomVector(0, 360) * spawnInitialExpulsionSpeed;
+                    unitsArray[i].velocity = GameFlowManager.sharedGameFlowManager.getRandomVector(spawnTargetAngle, spawnConeArc) * spawnInitialExpulsionSpeed;
                     unitsArray[i].isAlive = true;
                     unitsArray[i].isHoming = true;
                     break;

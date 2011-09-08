@@ -38,6 +38,7 @@ namespace E_Shooter
         public int currentHP;
         public int initialHP;
 
+        
 
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch):base(givenGameame)
         {
@@ -145,6 +146,8 @@ namespace E_Shooter
             this.velocity = new Vector2(0, 0);
             this.rotation = 0f;
             this.currentHP = this.initialHP;
+            this.isAlive = false;
+
         }
 
         private void wallBounce()

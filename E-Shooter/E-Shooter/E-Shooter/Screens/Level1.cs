@@ -18,6 +18,7 @@ namespace E_Shooter
     {
 
         public EnemyBaseObject enemyBase1;
+        public EnemyBaseObject enemyBase2;
 
         public Level1(Game game, SpriteBatch givenSpriteBatch) : base(game, givenSpriteBatch)
         {
@@ -25,8 +26,25 @@ namespace E_Shooter
             enemyBase1.position = new Vector2(300, 240);
             enemyBase1.spawnInitialExpulsionSpeed = 150f;
             enemyBase1.color = Color.Blue;
+            enemyBase1.scale = 0.7f;
+            enemyBase1.setUnitsHomingSpeed(0.2f);
+            enemyBase1.isAlive = true;
+            enemyBase1.isStarted = true;
 
             collisionList.Add(enemyBase1);
+
+            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 30);
+            enemyBase2.position = new Vector2(250, 240);
+            enemyBase2.spawnInitialExpulsionSpeed = 150f;
+            enemyBase2.color = Color.BlueViolet;
+            enemyBase2.scale = 0.7f;
+            enemyBase1.setUnitsHomingSpeed(0.2f);
+            enemyBase2.isAlive = false;
+            enemyBase2.isStarted = false;
+
+            collisionList.Add(enemyBase2);
+
+            
 
         }
 
@@ -37,8 +55,8 @@ namespace E_Shooter
 
             base.LoadContent();
 
-            enemyBase1.setUnitsHomingSpeed(0.2f);
             Game.Components.Add(enemyBase1);
+            Game.Components.Add(enemyBase2);
 
             isLoaded = true;
         }
@@ -47,13 +65,22 @@ namespace E_Shooter
         {
             Game.Components.Remove(enemyBase1);
             enemyBase1.Dispose();
+
+            Game.Components.Remove(enemyBase2);
+            enemyBase2.Dispose();
             base.Dispose(disposing);
         }
 
         public override void Update(GameTime gameTime)
         {
             // check is level is over
-            if (enemyBase1.isCompleted)
+            if (enemyBase1.isCompleted && enemyBase2.isStarted == false && enemyBase2.isCompleted == false)
+            {
+                enemyBase2.isAlive = true;
+                enemyBase2.isStarted = true;
+            }
+
+            if(enemyBase2.isCompleted)
                 this.isComplete = true;
 
             base.Update(gameTime);

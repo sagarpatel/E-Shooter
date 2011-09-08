@@ -22,6 +22,8 @@ namespace E_Shooter
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch,5);
             enemyBase1.position = new Vector2(400, 240);
             enemyBase1.spawnInitialExpulsionSpeed = 100f;
+            enemyBase1.isAlive = true;
+            enemyBase1.isStarted = true;
             
             collisionList.Add(enemyBase1);
         }
