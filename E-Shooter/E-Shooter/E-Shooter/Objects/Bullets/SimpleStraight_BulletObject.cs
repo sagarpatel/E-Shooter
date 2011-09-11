@@ -30,7 +30,7 @@ namespace E_Shooter
             color = Color.LawnGreen;
 
             fireCooldown = 200;
-            speed = 0.2f;
+            speed = 0.5f;
 
         
 

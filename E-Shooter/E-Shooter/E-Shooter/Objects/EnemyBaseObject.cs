@@ -29,7 +29,7 @@ namespace E_Shooter
 
         public bool isStarted;
 
-        public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch, int maximumUnitCount):base(game, givenSpriteBatch)
+        public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch, int maximumUnitCount, float wbDampFact):base(game, givenSpriteBatch)
         {
             maxUnits = maximumUnitCount;
             spawnCooldown = 200;
@@ -44,10 +44,11 @@ namespace E_Shooter
             {
                 unitsArray[i] = new EnemyUnitObject(game, spriteBatch);
                 unitsArray[i].isAlive = false;
-                unitsArray[i].position = position;
+                unitsArray[i].position = this.position;
                 unitsArray[i].isHoming = true;
                 //  unitsArray[i].homingSpeed = 0.05f;
                 unitsArray[i].scale = 0.4f;
+                unitsArray[i].wallBounceDampningFactor = wbDampFact;
                 
                 Game.Components.Add(unitsArray[i]);
             }

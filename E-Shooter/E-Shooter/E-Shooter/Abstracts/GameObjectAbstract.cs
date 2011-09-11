@@ -34,6 +34,7 @@ namespace E_Shooter
         public Color color;
 
         public bool isWallBounce;
+        public float wallBounceDampningFactor;
 
         public int currentHP;
         public int initialHP;
@@ -60,6 +61,8 @@ namespace E_Shooter
 
             initialHP = 100;
             currentHP = initialHP;
+
+            wallBounceDampningFactor = 1f;
         }
 
 
@@ -163,9 +166,9 @@ namespace E_Shooter
             float bottomBound = this.position.Y + this.texture.Height/2;
 
             if (leftBound <= 0 || rightBound >= Game1.screenWidth)
-                this.velocity.X = -this.velocity.X;
+                this.velocity.X = -this.velocity.X * wallBounceDampningFactor;
             if (topBound <= 0 || bottomBound > Game1.screenHeight)
-                this.velocity.Y = -this.velocity.Y;
+                this.velocity.Y = -this.velocity.Y * wallBounceDampningFactor;
         }
     }
 
