@@ -25,6 +25,7 @@ namespace E_Shooter
         public Level1 level1;
         public Level2 level2;
         public Level3 level3;
+        public Level4 level4;
 
         List<ScreenAbstract> screenList;
         int currentScreenIndex;
@@ -76,6 +77,10 @@ namespace E_Shooter
             level3 = new Level3(myGame, mySpriteBatch);
             level3.isActive = false;
             screenList.Add(level3);
+
+            level4 = new Level4(myGame, mySpriteBatch);
+            level4.isActive = false;
+            screenList.Add(level4);
            
 
         }
