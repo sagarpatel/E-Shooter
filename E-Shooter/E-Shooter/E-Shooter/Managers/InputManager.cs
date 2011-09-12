@@ -22,10 +22,11 @@ namespace E_Shooter
         private Vector2 flickDelta;
         private Vector2 tapPosition;
         private Vector2 touchPosition;
+        private bool isDoubleTap;
 
         private InputManager(Game game): base(game)
         {
-            TouchPanel.EnabledGestures = GestureType.Flick | GestureType.Tap;
+            TouchPanel.EnabledGestures = GestureType.Flick | GestureType.Tap | GestureType.DoubleTap;
         }
 
         public static InputManager sharedInputManager
@@ -59,6 +60,10 @@ namespace E_Shooter
 
                     case GestureType.Tap:
                         handleTap(gs.Position);
+                        break;
+
+                    case GestureType.DoubleTap:
+                        handleDoubleTap();
                         break;
 
                 }
@@ -99,6 +104,10 @@ namespace E_Shooter
         {
             touchPosition = position;
         }
+        private void handleDoubleTap()
+        {
+            isDoubleTap = true;
+        }
         #endregion
 
 
@@ -118,6 +127,16 @@ namespace E_Shooter
         public Vector2 getTouchPosition()
         {
             return touchPosition;
+        }
+        public bool getIsDoubleTap()
+        {
+            if (isDoubleTap)
+            {
+                isDoubleTap = false;
+                return true;
+            }
+            else
+                return false;
         }
         #endregion
 

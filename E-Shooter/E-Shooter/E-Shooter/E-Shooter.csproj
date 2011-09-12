@@ -91,6 +91,7 @@
     <Compile Include="Managers\InputManager.cs" />
     <Compile Include="Managers\TextureManager.cs" />
     <Compile Include="Abstracts\BulletObjectAbstract.cs" />
+    <Compile Include="Objects\Bullets\SimpleStraightBounce_BulletObject.cs" />
     <Compile Include="Objects\EnemyBaseObject.cs" />
     <Compile Include="Objects\EnemyUnitObject.cs" />
     <Compile Include="Objects\PlayerObject.cs" />

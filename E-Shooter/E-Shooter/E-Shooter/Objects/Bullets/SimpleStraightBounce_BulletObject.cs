@@ -13,27 +13,28 @@ using Microsoft.Xna.Framework.Media;
 
 namespace E_Shooter
 {
-
-    public class SimpleStraight_BulletObject : BulletObjectAbstract
+    public class SimpleStraightBounce_BulletObject : BulletObjectAbstract
     {
 
-        public SimpleStraight_BulletObject(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
+        public SimpleStraightBounce_BulletObject(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
-            
+
         }
+
+
+
 
 
         protected override void LoadContent()
         {
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
             scale = 0.2f;
-            color = Color.LawnGreen;
+            color = Color.DeepSkyBlue;
 
-            fireCooldown = 200;
-            speed = 0.5f;
+            fireCooldown = 400;
+            speed = 0.25f;
 
-            isWallBounce = false;
-        
+            isWallBounce = true;
 
             base.LoadContent();
         }
@@ -63,8 +64,8 @@ namespace E_Shooter
                                 collObj.currentHP = collObj.currentHP - this.damagePoints;
                                 this.isAlive = false;
                                 this.reset();
-                                
-                               // continue;
+
+                                // continue;
                             }
 
                         }
@@ -73,7 +74,7 @@ namespace E_Shooter
 
             }
 
-                      
+
 
             base.Update(gameTime);
         }
@@ -81,7 +82,7 @@ namespace E_Shooter
 
         private void updatePV(GameTime gameTime)
         {
-            velocity = speed * facing;
+           // velocity = speed * facing;
             position += velocity * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
@@ -92,8 +93,7 @@ namespace E_Shooter
 
 
 
+
+
     }
-
-
-
 }

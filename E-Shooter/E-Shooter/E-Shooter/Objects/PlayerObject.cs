@@ -22,6 +22,11 @@ namespace E_Shooter
         SimpleStraight_BulletObject[] weapon1;
         int maxWeapon1;
 
+        SimpleStraightBounce_BulletObject[] weapon2;
+        int maxWeapon2;
+
+        int currentWeaponIndex;
+        int maxWeaponIndex;
 
         public PlayerObject(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
@@ -37,8 +42,9 @@ namespace E_Shooter
             position = new Vector2(0, 0);
             facing = new Vector2(0, 0);
             isAlive = true;
+            isWallBounce = false;
 
-            maxWeapon1 = 100;
+            maxWeapon1 = 50;
             weapon1 = new SimpleStraight_BulletObject[maxWeapon1];
             for (int i = 0; i < maxWeapon1; ++i)
             {
@@ -46,6 +52,16 @@ namespace E_Shooter
                 Game.Components.Add(weapon1[i]);
             }
 
+            maxWeapon2 = 20;
+            weapon2 = new SimpleStraightBounce_BulletObject[maxWeapon2];
+            for (int i = 0; i < maxWeapon2; i++)
+            {
+                weapon2[i] = new SimpleStraightBounce_BulletObject(game, spriteBatch);
+                Game.Components.Add(weapon2[i]);
+            }
+
+            currentWeaponIndex = 0;
+            maxWeaponIndex = 1;
             
             base.LoadContent();
         }
@@ -61,6 +77,12 @@ namespace E_Shooter
 
 
                 //Handle weapons
+                if (InputManager.sharedInputManager.getIsDoubleTap())
+                {
+                    currentWeaponIndex++;
+                    if (currentWeaponIndex > maxWeaponIndex)
+                        currentWeaponIndex = 0;
+                }
 
                 HandleWeapons(gameTime);
 
@@ -178,24 +200,48 @@ namespace E_Shooter
             int intTime = (int)gameTime.TotalGameTime.TotalMilliseconds;
             BulletObjectAbstract.rateCounter += gameTime.ElapsedGameTime.Milliseconds;
 
-            if ( BulletObjectAbstract.rateCounter >= BulletObjectAbstract.fireCooldown)
+            switch (currentWeaponIndex)
             {
-                BulletObjectAbstract.rateCounter = 0;
-
-                // for weapon1
-                
-                foreach (SimpleStraight_BulletObject bullet in weapon1)
-                {
-                    if (!bullet.isAlive)
+                case 0:
+                    // for weapon 1
+                    if (SimpleStraight_BulletObject.rateCounter >= SimpleStraight_BulletObject.fireCooldown)
                     {
-                        bullet.isAlive = true;
-                        bullet.facing = facing;
-                        bullet.position = position;
-                        break;
+                        SimpleStraight_BulletObject.rateCounter = 0;
+                        foreach (SimpleStraight_BulletObject bullet in weapon1)
+                        {
+                            if (!bullet.isAlive)
+                            {
+                                bullet.isAlive = true;
+                                bullet.facing = facing;
+                                bullet.position = position + (this.texture.Width * scale / 2) * facing;
+                                bullet.velocity = SimpleStraight_BulletObject.speed * this.facing;
+                                break;
+                            }
+                        }
                     }
+                    break;
 
-                }
+                case 1:
+                    // for weapon2
+                    if (SimpleStraightBounce_BulletObject.rateCounter >= SimpleStraightBounce_BulletObject.fireCooldown)
+                    {
+                        SimpleStraightBounce_BulletObject.rateCounter = 0;
+                        foreach (SimpleStraightBounce_BulletObject bullet in weapon2)
+                        {
+                            if (!bullet.isAlive)
+                            {
+                                bullet.isAlive = true;
+                                bullet.facing = facing;
+                                bullet.position = position + (this.texture.Width*scale/2 )*facing;
+                                bullet.velocity = SimpleStraightBounce_BulletObject.speed * this.facing;
+                                break;
+                            }
+
+                        }
+                    }
+                    break;
             }
+   
 
         }
 

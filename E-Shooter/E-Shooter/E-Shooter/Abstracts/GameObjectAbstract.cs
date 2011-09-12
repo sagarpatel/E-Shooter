@@ -160,14 +160,14 @@ namespace E_Shooter
 
         private void wallBounce()
         {
-            float leftBound = this.position.X - this.texture.Width/2;
-            float rightBound = this.position.X + this.texture.Width/2;
-            float topBound = this.position.Y - this.texture.Height/2;
-            float bottomBound = this.position.Y + this.texture.Height/2;
+            float leftBound = this.position.X - this.texture.Width*this.scale/2;
+            float rightBound = this.position.X + this.texture.Width*this.scale/2;
+            float topBound = this.position.Y - this.texture.Height*this.scale/2;
+            float bottomBound = this.position.Y + this.texture.Height*this.scale/2;
 
             if (leftBound <= 0 || rightBound >= Game1.screenWidth)
                 this.velocity.X = -this.velocity.X * wallBounceDampningFactor;
-            if (topBound <= 0 || bottomBound > Game1.screenHeight)
+            if (topBound <= 0 || bottomBound >= Game1.screenHeight)
                 this.velocity.Y = -this.velocity.Y * wallBounceDampningFactor;
         }
     }
