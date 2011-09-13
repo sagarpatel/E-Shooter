@@ -198,23 +198,21 @@ namespace E_Shooter
         private void HandleWeapons(GameTime gameTime)
         {
             int intTime = (int)gameTime.TotalGameTime.TotalMilliseconds;
-            BulletObjectAbstract.rateCounter += gameTime.ElapsedGameTime.Milliseconds;
+            BulletObjectAbstract.fireRateCounter += gameTime.ElapsedGameTime.Milliseconds;
 
             switch (currentWeaponIndex)
             {
                 case 0:
                     // for weapon 1
-                    if (SimpleStraight_BulletObject.rateCounter >= SimpleStraight_BulletObject.fireCooldown)
+                    if (SimpleStraight_BulletObject.fireRateCounter >= SimpleStraight_BulletObject.fireCooldown)
                     {
-                        SimpleStraight_BulletObject.rateCounter = 0;
+                        SimpleStraight_BulletObject.fireRateCounter = 0;
                         foreach (SimpleStraight_BulletObject bullet in weapon1)
                         {
                             if (!bullet.isAlive)
                             {
-                                bullet.isAlive = true;
-                                bullet.facing = facing;
-                                bullet.position = position + (this.texture.Width * scale / 2) * facing;
-                                bullet.velocity = SimpleStraight_BulletObject.speed * this.facing;
+                                bullet.FireBullet(this);
+
                                 break;
                             }
                         }
@@ -223,9 +221,9 @@ namespace E_Shooter
 
                 case 1:
                     // for weapon2
-                    if (SimpleStraightBounce_BulletObject.rateCounter >= SimpleStraightBounce_BulletObject.fireCooldown)
+                    if (SimpleStraightBounce_BulletObject.fireRateCounter >= SimpleStraightBounce_BulletObject.fireCooldown)
                     {
-                        SimpleStraightBounce_BulletObject.rateCounter = 0;
+                        SimpleStraightBounce_BulletObject.fireRateCounter = 0;
                         foreach (SimpleStraightBounce_BulletObject bullet in weapon2)
                         {
                             if (!bullet.isAlive)

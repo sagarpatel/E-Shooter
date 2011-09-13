@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Abstracts\GameObjectAbstract.cs" />
     <Compile Include="Abstracts\ScreenAbstract.cs" />
+    <Compile Include="Abstracts\WeaponObjectAbstract.cs" />
     <Compile Include="Managers\GameFlowManager.cs" />
     <Compile Include="Managers\InputManager.cs" />
     <Compile Include="Managers\TextureManager.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Objects\EnemyUnitObject.cs" />
     <Compile Include="Objects\PlayerObject.cs" />
     <Compile Include="Objects\Bullets\SimpleStraight_BulletObject.cs" />
+    <Compile Include="Objects\Weapons\SimpleWeapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\Level1.cs" />
     <Compile Include="Screens\Level2.cs" />

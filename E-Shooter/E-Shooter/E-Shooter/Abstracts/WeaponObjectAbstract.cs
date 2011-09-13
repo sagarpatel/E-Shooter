@@ -16,39 +16,51 @@ namespace E_Shooter
 {
 
 
-    public abstract class BulletObjectAbstract : GameObjectAbstract
+    public abstract class WeaponObjectAbstract : Microsoft.Xna.Framework.GameComponent
     {
 
-        public static int fireCooldown;
-        public static float speed;
-        public static float fireRateCounter;
-
-        public int damagePoints;
-
-        public BulletObjectAbstract(Game game, SpriteBatch givenSpriteBatch):base(game, givenSpriteBatch)
+        public BulletObjectAbstract[] bulletsArray;
+        public int maxBullets;
+        
+        public enum fireTypes
         {
-            fireCooldown = 100;
-            speed = 1;
-            fireRateCounter = 1;
-            damagePoints = 10;
+            Single,
+            Double
+        };
+        public fireTypes currentFireType;
+
+        public int fireCooldown;
+        public int fireRateCounter;
+
+
+        public WeaponObjectAbstract(Game game, SpriteBatch givenSpriteBatch, int MaxBulletCount) : base(game)
+        {
 
         }
 
-        protected override void LoadContent()
+
+        public override void Initialize()
         {
-            base.LoadContent();
+            base.Initialize();
         }
+
 
 
         public override void Update(GameTime gameTime)
         {
+
             base.Update(gameTime);
         }
 
-  
-
 
     }
+
+
+
+
+
+
+
 
 
 

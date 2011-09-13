@@ -81,7 +81,7 @@ namespace E_Shooter
 
         private void updatePV(GameTime gameTime)
         {
-            velocity = speed * facing;
+           // velocity = speed * facing;
             position += velocity * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
@@ -91,6 +91,14 @@ namespace E_Shooter
         }
 
 
+        public override void FireBullet(PlayerObject player)
+        {
+            this.isAlive = true;
+            this.facing = player.facing;
+            this.position = player.position + (player.texture.Width * player.scale / 2) * player.facing;
+            this.velocity = SimpleStraight_BulletObject.speed * player.facing;
+
+        }
 
     }
 
