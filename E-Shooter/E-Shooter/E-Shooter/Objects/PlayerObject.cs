@@ -19,11 +19,13 @@ namespace E_Shooter
     {
 
 
-        SimpleStraight_BulletObject[] weapon1;
-        int maxWeapon1;
+        //SimpleStraight_BulletObject[] weapon1;
+        //int maxWeapon1;
 
-        SimpleStraightBounce_BulletObject[] weapon2;
-        int maxWeapon2;
+        //SimpleStraightBounce_BulletObject[] weapon2;
+        //int maxWeapon2;
+
+        SimpleWeapon simpleWeapon;
 
         int currentWeaponIndex;
         int maxWeaponIndex;
@@ -44,24 +46,12 @@ namespace E_Shooter
             isAlive = true;
             isWallBounce = false;
 
-            maxWeapon1 = 50;
-            weapon1 = new SimpleStraight_BulletObject[maxWeapon1];
-            for (int i = 0; i < maxWeapon1; ++i)
-            {
-                weapon1[i] = new SimpleStraight_BulletObject(game, spriteBatch);
-                Game.Components.Add(weapon1[i]);
-            }
 
-            maxWeapon2 = 20;
-            weapon2 = new SimpleStraightBounce_BulletObject[maxWeapon2];
-            for (int i = 0; i < maxWeapon2; i++)
-            {
-                weapon2[i] = new SimpleStraightBounce_BulletObject(game, spriteBatch);
-                Game.Components.Add(weapon2[i]);
-            }
+            simpleWeapon = new SimpleWeapon(game, spriteBatch, 50);
+
 
             currentWeaponIndex = 0;
-            maxWeaponIndex = 1;
+            maxWeaponIndex = 0;
             
             base.LoadContent();
         }
@@ -197,47 +187,19 @@ namespace E_Shooter
 
         private void HandleWeapons(GameTime gameTime)
         {
-            int intTime = (int)gameTime.TotalGameTime.TotalMilliseconds;
-            BulletObjectAbstract.fireRateCounter += gameTime.ElapsedGameTime.Milliseconds;
 
             switch (currentWeaponIndex)
             {
                 case 0:
                     // for weapon 1
-                    if (SimpleStraight_BulletObject.fireRateCounter >= SimpleStraight_BulletObject.fireCooldown)
-                    {
-                        SimpleStraight_BulletObject.fireRateCounter = 0;
-                        foreach (SimpleStraight_BulletObject bullet in weapon1)
-                        {
-                            if (!bullet.isAlive)
-                            {
-                                bullet.FireBullet(this);
-
-                                break;
-                            }
-                        }
-                    }
+                    simpleWeapon.FireWeapon(gameTime, this);
                     break;
 
-                case 1:
-                    // for weapon2
-                    if (SimpleStraightBounce_BulletObject.fireRateCounter >= SimpleStraightBounce_BulletObject.fireCooldown)
-                    {
-                        SimpleStraightBounce_BulletObject.fireRateCounter = 0;
-                        foreach (SimpleStraightBounce_BulletObject bullet in weapon2)
-                        {
-                            if (!bullet.isAlive)
-                            {
-                                bullet.isAlive = true;
-                                bullet.facing = facing;
-                                bullet.position = position + (this.texture.Width*scale/2 )*facing;
-                                bullet.velocity = SimpleStraightBounce_BulletObject.speed * this.facing;
-                                break;
-                            }
+                //case 1:
+                //    // for weapon2
 
-                        }
-                    }
-                    break;
+                    
+                //    break;
             }
    
 

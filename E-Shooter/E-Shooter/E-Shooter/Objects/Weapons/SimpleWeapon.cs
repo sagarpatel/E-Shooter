@@ -32,6 +32,7 @@ namespace E_Shooter
             }
 
             currentFireType = fireTypes.Single;
+            fireCooldown = 200;
 
         }
 
@@ -53,30 +54,31 @@ namespace E_Shooter
             fireRateCounter += gameTime.ElapsedGameTime.Milliseconds;
 
 
-            switch (currentFireType)
-            {
+     
 
-                case fireTypes.Single:
-                    if (this.fireRateCounter >= this.fireCooldown)
-                    {
-                        this.fireRateCounter = 0;
+            if (this.fireRateCounter >= this.fireCooldown)
+            {
+                this.fireRateCounter = 0;
+
+                switch (currentFireType)
+                {
+
+                    case fireTypes.Single:
+
                         foreach (SimpleStraight_BulletObject bullet in bulletsArray)
                         {
-
                             if (bullet.isAlive == false)
                             {
                                 bullet.isAlive = true;
                                 bullet.facing = player.facing;
                                 bullet.position = player.position + (player.texture.Width * player.scale / 2) * player.facing;
-                                bullet.velocity = SimpleStraight_BulletObject.speed * player.facing;
+                                bullet.velocity = this.speed * player.facing;
 
                                 break;
                             }
-
                         }
-                    }
-                    break;
-
+                        break;
+                }
 
             }
 

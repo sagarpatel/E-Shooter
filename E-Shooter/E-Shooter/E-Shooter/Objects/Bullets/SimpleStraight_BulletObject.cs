@@ -29,9 +29,6 @@ namespace E_Shooter
             scale = 0.2f;
             color = Color.LawnGreen;
 
-            fireCooldown = 200;
-            speed = 0.5f;
-
             isWallBounce = false;
         
 
@@ -90,15 +87,6 @@ namespace E_Shooter
             base.Draw(gameTime);
         }
 
-
-        public override void FireBullet(PlayerObject player)
-        {
-            this.isAlive = true;
-            this.facing = player.facing;
-            this.position = player.position + (player.texture.Width * player.scale / 2) * player.facing;
-            this.velocity = SimpleStraight_BulletObject.speed * player.facing;
-
-        }
 
     }
 

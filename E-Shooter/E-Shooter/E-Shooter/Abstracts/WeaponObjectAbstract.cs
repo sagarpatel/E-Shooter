@@ -31,11 +31,14 @@ namespace E_Shooter
 
         public int fireCooldown;
         public int fireRateCounter;
+        public float speed;
 
 
         public WeaponObjectAbstract(Game game, SpriteBatch givenSpriteBatch, int MaxBulletCount) : base(game)
         {
-
+            fireCooldown = 100;
+            speed = 1;
+            fireRateCounter = 1;
         }
 
 
