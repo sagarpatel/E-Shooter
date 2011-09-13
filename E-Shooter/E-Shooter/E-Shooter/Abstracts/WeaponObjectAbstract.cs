@@ -21,6 +21,8 @@ namespace E_Shooter
 
         public BulletObjectAbstract[] bulletsArray;
         public int maxBullets;
+
+        public bool isWallBouncing;
         
         public enum fireTypes
         {
@@ -32,6 +34,9 @@ namespace E_Shooter
         public int fireCooldown;
         public int fireRateCounter;
         public float speed;
+
+        public Color originalColor;
+        public Color bounceColor;
 
 
         public WeaponObjectAbstract(Game game, SpriteBatch givenSpriteBatch, int MaxBulletCount) : base(game)

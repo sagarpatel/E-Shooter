@@ -18,13 +18,6 @@ namespace E_Shooter
     public class PlayerObject : GameObjectAbstract
     {
 
-
-        //SimpleStraight_BulletObject[] weapon1;
-        //int maxWeapon1;
-
-        //SimpleStraightBounce_BulletObject[] weapon2;
-        //int maxWeapon2;
-
         SimpleWeapon simpleWeapon;
 
         int currentWeaponIndex;
@@ -69,9 +62,13 @@ namespace E_Shooter
                 //Handle weapons
                 if (InputManager.sharedInputManager.getIsDoubleTap())
                 {
-                    currentWeaponIndex++;
-                    if (currentWeaponIndex > maxWeaponIndex)
-                        currentWeaponIndex = 0;
+                    //currentWeaponIndex++;
+                    //if (currentWeaponIndex > maxWeaponIndex)
+                    //    currentWeaponIndex = 0;
+                    if (simpleWeapon.isWallBouncing)
+                        simpleWeapon.setWallBounce(false);
+                    else
+                        simpleWeapon.setWallBounce(true);
                 }
 
                 HandleWeapons(gameTime);

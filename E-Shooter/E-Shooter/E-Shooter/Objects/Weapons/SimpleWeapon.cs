@@ -24,10 +24,14 @@ namespace E_Shooter
 
             maxBullets = MaxBulletCount;
             bulletsArray = new SimpleStraight_BulletObject[maxBullets];
+
+            originalColor = Color.LawnGreen;
+            bounceColor = Color.DeepSkyBlue;
             
             for (int i = 0; i < maxBullets; ++i)
             {
                 bulletsArray[i] = new SimpleStraight_BulletObject(game, givenSpriteBatch);
+                bulletsArray[i].color = originalColor;
                 Game.Components.Add(bulletsArray[i]);
             }
 
@@ -79,11 +83,30 @@ namespace E_Shooter
                         }
                         break;
                 }
-
             }
 
 
         }
+
+        public void setWallBounce(bool setWallBounce)
+        {
+            foreach (SimpleStraight_BulletObject bullet in bulletsArray)
+            {
+                bullet.isWallBounce = setWallBounce;
+                if (setWallBounce == true)
+                {
+                    bullet.color = bounceColor;
+                    isWallBouncing = true;
+                }
+                else
+                {
+                    bullet.color = originalColor;
+                    isWallBouncing = false;
+                }
+            }
+
+        }
+
 
 
     }
