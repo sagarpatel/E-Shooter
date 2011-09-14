@@ -102,6 +102,7 @@
     <Compile Include="Screens\Level2.cs" />
     <Compile Include="Screens\Level3.cs" />
     <Compile Include="Screens\Level4.cs" />
+    <Compile Include="Screens\Level5.cs" />
     <Compile Include="Screens\MainMenu.cs" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
