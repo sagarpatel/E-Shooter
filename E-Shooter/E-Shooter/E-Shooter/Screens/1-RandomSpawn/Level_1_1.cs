@@ -22,7 +22,7 @@ namespace E_Shooter
 
         public Level_1_1(Game game, SpriteBatch givenSpriteBatch) : base(game, givenSpriteBatch)
         {
-            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 20,0.85f);
+            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 10,0.85f);
             enemyBase1.position = new Vector2(300, 240);
             enemyBase1.spawnInitialExpulsionSpeed = 150f;
             enemyBase1.color = Color.Blue;
@@ -33,7 +33,7 @@ namespace E_Shooter
 
             collisionList.Add(enemyBase1);
 
-            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 15,0.80f);
+            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 10,0.80f);
             enemyBase2.position = new Vector2(250, 240);
             enemyBase2.spawnInitialExpulsionSpeed = 150f;
             enemyBase2.color = Color.BlueViolet;
