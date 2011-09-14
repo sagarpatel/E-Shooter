@@ -98,11 +98,12 @@
     <Compile Include="Objects\Bullets\SimpleStraight_BulletObject.cs" />
     <Compile Include="Objects\Weapons\SimpleWeapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screens\Level_1_1.cs" />
-    <Compile Include="Screens\Level_1_2.cs" />
-    <Compile Include="Screens\Level_1_3.cs" />
-    <Compile Include="Screens\Level_1_4.cs" />
-    <Compile Include="Screens\Level_1_5.cs" />
+    <Compile Include="Screens\1-RandomSpawn\Level_1_1.cs" />
+    <Compile Include="Screens\1-RandomSpawn\Level_1_2.cs" />
+    <Compile Include="Screens\1-RandomSpawn\Level_1_3.cs" />
+    <Compile Include="Screens\1-RandomSpawn\Level_1_4.cs" />
+    <Compile Include="Screens\1-RandomSpawn\Level_1_5.cs" />
+    <Compile Include="Screens\2-DirectedSpawn\Level_2_1.cs" />
     <Compile Include="Screens\MainMenu.cs" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>

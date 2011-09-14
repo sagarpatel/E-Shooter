@@ -79,7 +79,7 @@ namespace E_Shooter
         private void updatePV(GameTime gameTime)
         {
            // velocity = speed * facing;
-            position += velocity * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            position += velocity * (float)gameTime.ElapsedGameTime.Milliseconds;
         }
 
         public override void Draw(GameTime gameTime)
