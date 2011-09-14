@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace E_Shooter
 {
-    public class Level5 : ScreenAbstract
+    public class Level_1_5 : ScreenAbstract
     {
 
 
@@ -23,7 +23,7 @@ namespace E_Shooter
         public EnemyBaseObject enemyBase5;
 
 
-        public Level5(Game game, SpriteBatch givenSpriteBatch): base(game, givenSpriteBatch)
+        public Level_1_5(Game game, SpriteBatch givenSpriteBatch): base(game, givenSpriteBatch)
         {
 
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);

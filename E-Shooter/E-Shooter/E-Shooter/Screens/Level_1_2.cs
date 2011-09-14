@@ -12,12 +12,12 @@ using Microsoft.Xna.Framework.Media;
 
 namespace E_Shooter
 {
-    public class Level2 : ScreenAbstract
+    public class Level_1_2 : ScreenAbstract
     {
         public EnemyBaseObject enemyBase1;
         public EnemyBaseObject enemyBase2;
 
-        public Level2(Game game, SpriteBatch givenSpriteBatch) : base(game,givenSpriteBatch)
+        public Level_1_2(Game game, SpriteBatch givenSpriteBatch) : base(game,givenSpriteBatch)
         {
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 5, 0.85f);
             enemyBase1.position = new Vector2(150, 240);

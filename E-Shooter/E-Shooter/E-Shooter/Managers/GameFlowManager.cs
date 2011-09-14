@@ -22,11 +22,15 @@ namespace E_Shooter
 
         public PlayerObject player1;
         public MainMenu mainMenu;
-        public Level1 level1;
-        public Level2 level2;
-        public Level3 level3;
-        public Level4 level4;
-        public Level5 level5;
+        public Level_1_1 level1;
+        public Level_1_2 level2;
+        public Level_1_3 level3;
+        public Level_1_4 level4;
+        public Level_1_5 level5;
+        //simple levels end
+
+        //targeted spawning levels begin
+
 
         List<ScreenAbstract> screenList;
         int currentScreenIndex;
@@ -67,23 +71,23 @@ namespace E_Shooter
             screenList.Add(mainMenu);
             myGame.Components.Add(mainMenu);
 
-            level1 = new Level1(myGame, mySpriteBatch);
+            level1 = new Level_1_1(myGame, mySpriteBatch);
             level1.isActive = false;
             screenList.Add(level1);
 
-            level2 = new Level2(myGame, mySpriteBatch);
+            level2 = new Level_1_2(myGame, mySpriteBatch);
             level2.isActive = false;
             screenList.Add(level2);
 
-            level3 = new Level3(myGame, mySpriteBatch);
+            level3 = new Level_1_3(myGame, mySpriteBatch);
             level3.isActive = false;
             screenList.Add(level3);
 
-            level4 = new Level4(myGame, mySpriteBatch);
+            level4 = new Level_1_4(myGame, mySpriteBatch);
             level4.isActive = false;
             screenList.Add(level4);
 
-            level5 = new Level5(myGame, mySpriteBatch);
+            level5 = new Level_1_5(myGame, mySpriteBatch);
             level5.isActive = false;
             screenList.Add(level5);
            

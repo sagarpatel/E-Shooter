@@ -14,13 +14,13 @@ namespace E_Shooter
 {
 
 
-    public class Level1 :  ScreenAbstract
+    public class Level_1_1 :  ScreenAbstract
     {
 
         public EnemyBaseObject enemyBase1;
         public EnemyBaseObject enemyBase2;
 
-        public Level1(Game game, SpriteBatch givenSpriteBatch) : base(game, givenSpriteBatch)
+        public Level_1_1(Game game, SpriteBatch givenSpriteBatch) : base(game, givenSpriteBatch)
         {
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 20,0.85f);
             enemyBase1.position = new Vector2(300, 240);
