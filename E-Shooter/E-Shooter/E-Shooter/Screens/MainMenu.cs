@@ -26,6 +26,21 @@ namespace E_Shooter
             enemyBase1.isStarted = true;
             
             collisionList.Add(enemyBase1);
+
+            // putting in abstract LoadContent()
+            //foreach(EnemyBaseObject eBase in collisionList)
+            //{
+            //    foreach (EnemyUnitObject units in eBase.unitsArray)
+            //    {
+            //        collisionList.Add(units);
+            //    }
+            //}
+
+
+
+
+
+            nextScreenType = typeof(Level_1_1);
         }
 
 

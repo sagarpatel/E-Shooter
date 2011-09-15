@@ -25,6 +25,8 @@ namespace E_Shooter
 
         public List<GameObjectAbstract> collisionList;
 
+        public Type nextScreenType;
+
         public ScreenAbstract(Game game, SpriteBatch givenSpriteBatch):base(game)
         {
             spriteBatch = givenSpriteBatch;
@@ -44,7 +46,18 @@ namespace E_Shooter
 
         protected override void LoadContent()
         {
-            
+
+            List<GameObjectAbstract> tempList = new List<GameObjectAbstract>(collisionList);
+
+            foreach (EnemyBaseObject ebase in tempList)
+            {
+                foreach (EnemyUnitObject units in ebase.unitsArray)
+                {
+                    collisionList.Add(units);
+                }
+            }
+
+                       
             base.LoadContent();
             isLoaded = true;
         }

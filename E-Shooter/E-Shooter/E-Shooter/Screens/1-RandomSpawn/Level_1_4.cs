@@ -66,6 +66,8 @@ namespace E_Shooter
 
             collisionList.Add(enemyBase4);
 
+            nextScreenType = typeof(Level_1_5);
+
         }
 
 

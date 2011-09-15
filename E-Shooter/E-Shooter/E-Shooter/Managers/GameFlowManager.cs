@@ -35,14 +35,13 @@ namespace E_Shooter
 
 
         List<ScreenAbstract> screenList;
-        int currentScreenIndex;
+        ScreenAbstract currentScreen;
 
         Random rand;
 
         private GameFlowManager(Game game, SpriteBatch mySpriteBatch): base(game)
         {
             screenList = new List<ScreenAbstract>();
-            currentScreenIndex = 0;
             rand = new Random();
         }
 
@@ -92,6 +91,9 @@ namespace E_Shooter
             level_1_5 = new Level_1_5(myGame, mySpriteBatch);
             level_1_5.isActive = false;
             screenList.Add(level_1_5);
+
+
+            currentScreen = mainMenu;
            
 
         }
@@ -99,25 +101,24 @@ namespace E_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            // TODO: Add your update code here
-            ScreenAbstract currentScreen = screenList[currentScreenIndex];
+
             if ( currentScreen.isComplete == true)
             {
                 myGame.Components.Remove(currentScreen);
               //  currentScreen.Dispose();
+                
 
-                currentScreenIndex ++;
+                foreach(ScreenAbstract screen in screenList)
+                {
+                    if (screen.GetType() == currentScreen.nextScreenType)
+                    {
+                        screen.isActive = true;
+                        myGame.Components.Add(screen);
+                        currentScreen = screen;
+                        break;
+                    }
+                }
 
-                if (currentScreenIndex < screenList.Count)
-                {
-                    ScreenAbstract newScreen = screenList[currentScreenIndex];
-                    newScreen.isActive = true;
-                    myGame.Components.Add(newScreen);
-                }
-                else
-                {
-                    currentScreenIndex --;
-                }
                 
             }
 
@@ -130,7 +131,7 @@ namespace E_Shooter
 
         public ScreenAbstract getCurrentScreen()
         {
-            return screenList[currentScreenIndex];
+            return currentScreen;
         }
 
         public Vector2 getRandomVector(int targetAngle, int coneArc)

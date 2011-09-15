@@ -68,8 +68,8 @@ namespace E_Shooter
 
             
 
-            for (int i=0; i< maxUnits ; ++i)
-                GameFlowManager.sharedGameFlowManager.getCurrentScreen().collisionList.Add(unitsArray[i]);
+            //for (int i=0; i< maxUnits ; ++i)
+            //    GameFlowManager.sharedGameFlowManager.getCurrentScreen().collisionList.Add(unitsArray[i]);
             
 
 
