@@ -101,6 +101,9 @@ namespace E_Shooter
 
                     }
 
+                    if (maxUnits == 0)
+                        this.isCompleted = true;
+
                     if(this.isCompleted)
                         this.isStarted = false;
                 }

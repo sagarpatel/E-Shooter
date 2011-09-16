@@ -27,6 +27,9 @@ namespace E_Shooter
         private InputManager(Game game): base(game)
         {
             TouchPanel.EnabledGestures = GestureType.Flick | GestureType.Tap | GestureType.DoubleTap;
+
+            tapPosition = new Vector2(400, 300);
+            touchPosition = new Vector2(400, 300);
         }
 
         public static InputManager sharedInputManager

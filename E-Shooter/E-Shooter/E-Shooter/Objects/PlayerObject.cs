@@ -33,8 +33,12 @@ namespace E_Shooter
         {
 
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
-         
-            position = new Vector2(0, 0);
+
+            Vector2 actualPosition = new Vector2(400, 300);
+            Rectangle phoneFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            position = getEdgePosition_setFacing(actualPosition, phoneFrame);
+
+           
             facing = new Vector2(0, 0);
             isAlive = true;
             isWallBounce = false;
