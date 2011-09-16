@@ -40,7 +40,7 @@ namespace E_Shooter
 
 
 
-            nextScreenType = typeof(Level_1_1);
+            nextScreenType = typeof(Level_2_1);
         }
 
 
@@ -58,7 +58,7 @@ namespace E_Shooter
 
         protected override void Dispose(bool disposing)
         {
-            enemyBase1.Dispose();
+           // enemyBase1.Dispose();
             base.Dispose(disposing);
         }
 
