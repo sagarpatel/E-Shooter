@@ -116,6 +116,7 @@ namespace E_Shooter
                     if (screen.GetType() == currentScreen.nextScreenType)
                     {
                         screen.isActive = true;
+                        screen.setInitialValues();
                         myGame.Components.Add(screen);
                         currentScreen = screen;
                         break;

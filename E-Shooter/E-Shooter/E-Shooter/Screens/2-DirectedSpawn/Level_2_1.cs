@@ -22,16 +22,8 @@ namespace E_Shooter
 
 
             movingEnemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 3, 0.75f);
-            movingEnemyBase1.position = new Vector2(300, 240);
-            movingEnemyBase1.spawnInitialExpulsionSpeed = 150f;
-            movingEnemyBase1.color = Color.IndianRed;
-            movingEnemyBase1.scale = 0.7f;
-            movingEnemyBase1.setUnitsHomingSpeed(0.5f);
-            movingEnemyBase1.isAlive = true;
-            movingEnemyBase1.isStarted = true;
 
-            movingEnemyBase1.velocity = new Vector2(1, 0);
-            movingEnemyBase1.isWallBounce = true;
+            setInitialValues();
 
             collisionList.Add(movingEnemyBase1);
 
@@ -91,6 +83,23 @@ namespace E_Shooter
             
         }
 
+        public override void setInitialValues()
+        {
+            movingEnemyBase1.position = new Vector2(300, 240);
+            movingEnemyBase1.spawnInitialExpulsionSpeed = 150f;
+            movingEnemyBase1.color = Color.IndianRed;
+            movingEnemyBase1.scale = 0.7f;
+            movingEnemyBase1.setUnitsHomingSpeed(0.5f);
+            movingEnemyBase1.isAlive = true;
+            movingEnemyBase1.isStarted = true;
+            movingEnemyBase1.currentHP = movingEnemyBase1.initialHP;
+            movingEnemyBase1.isCompleted = false;
+
+            movingEnemyBase1.velocity = new Vector2(1, 0);
+            movingEnemyBase1.isWallBounce = true;
+
+            base.setInitialValues();
+        }
 
     }
 }

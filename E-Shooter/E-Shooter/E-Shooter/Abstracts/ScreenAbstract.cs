@@ -78,6 +78,11 @@ namespace E_Shooter
             base.Draw(gameTime);
         }
 
+        public virtual void setInitialValues()
+        {
+            this.isComplete = false;
+        }
+
 
     }
 

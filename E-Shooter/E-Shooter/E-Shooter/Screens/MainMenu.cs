@@ -20,10 +20,12 @@ namespace E_Shooter
         public MainMenu(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch,5,1);
-            enemyBase1.position = new Vector2(400, 240);
-            enemyBase1.spawnInitialExpulsionSpeed = 100f;
-            enemyBase1.isAlive = true;
-            enemyBase1.isStarted = true;
+            //enemyBase1.position = new Vector2(400, 240);
+            //enemyBase1.spawnInitialExpulsionSpeed = 100f;
+            //enemyBase1.isAlive = true;
+            //enemyBase1.isStarted = true;
+
+            setInitialValues();
             
             collisionList.Add(enemyBase1);
 
@@ -81,6 +83,18 @@ namespace E_Shooter
             }
         }
 
+
+        public override void setInitialValues()
+        {
+            enemyBase1.position = new Vector2(400, 240);
+            enemyBase1.spawnInitialExpulsionSpeed = 100f;
+            enemyBase1.isAlive = true;
+            enemyBase1.isStarted = true;
+            enemyBase1.currentHP = enemyBase1.initialHP;
+            enemyBase1.isCompleted = false;
+            
+            base.setInitialValues();
+        }
 
 
     }
