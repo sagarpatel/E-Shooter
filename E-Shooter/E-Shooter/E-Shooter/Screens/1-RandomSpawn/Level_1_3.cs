@@ -21,38 +21,16 @@ namespace E_Shooter
         public Level_1_3(Game game, SpriteBatch givenSpriteBatch) : base(game,givenSpriteBatch)
         {
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.85f);
-            enemyBase1.position = new Vector2(200, 240);
-            enemyBase1.spawnInitialExpulsionSpeed = 80f;
-            enemyBase1.color = Color.Orange;
-            enemyBase1.scale = 0.6f;
-            enemyBase1.setUnitsHomingSpeed(0.7f);
-            enemyBase1.isAlive = true;
-            enemyBase1.isStarted = true;
-
             collisionList.Add(enemyBase1);
 
             enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 6, 0.7f);
-            enemyBase2.position = new Vector2(350, 240);
-            enemyBase2.spawnInitialExpulsionSpeed = 100f;
-            enemyBase2.color = Color.OrangeRed;
-            enemyBase2.scale = 0.7f;
-            enemyBase2.setUnitsHomingSpeed(0.85f);
-            enemyBase2.isAlive = true;
-            enemyBase2.isStarted = true;
-
             collisionList.Add(enemyBase2);
 
 
             enemyBase3 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.85f);
-            enemyBase3.position = new Vector2(500, 240);
-            enemyBase3.spawnInitialExpulsionSpeed = 80f;
-            enemyBase3.color = Color.Orange;
-            enemyBase3.scale = 0.6f;
-            enemyBase3.setUnitsHomingSpeed(0.7f);
-            enemyBase3.isAlive = true;
-            enemyBase3.isStarted = true;
-
             collisionList.Add(enemyBase3);
+
+            setInitialValues();
 
             nextScreenType = typeof(Level_1_4);
         }
@@ -103,6 +81,48 @@ namespace E_Shooter
                 base.Draw(gameTime);
             }
         }
+
+        public override void setInitialValues()
+        {
+
+            enemyBase1.position = new Vector2(200, 240);
+            enemyBase1.spawnInitialExpulsionSpeed = 80f;
+            enemyBase1.color = Color.Orange;
+            enemyBase1.scale = 0.6f;
+            enemyBase1.setUnitsHomingSpeed(0.7f);
+            enemyBase1.isAlive = true;
+            enemyBase1.isStarted = true;
+            enemyBase1.isCompleted = false;
+            enemyBase1.currentHP = enemyBase1.initialHP;
+
+
+            enemyBase2.position = new Vector2(350, 240);
+            enemyBase2.spawnInitialExpulsionSpeed = 100f;
+            enemyBase2.color = Color.OrangeRed;
+            enemyBase2.scale = 0.7f;
+            enemyBase2.setUnitsHomingSpeed(0.85f);
+            enemyBase2.isAlive = true;
+            enemyBase2.isStarted = true;
+            enemyBase2.isCompleted = false;
+            enemyBase2.currentHP = enemyBase2.initialHP;
+
+
+            enemyBase3.position = new Vector2(500, 240);
+            enemyBase3.spawnInitialExpulsionSpeed = 80f;
+            enemyBase3.color = Color.Orange;
+            enemyBase3.scale = 0.6f;
+            enemyBase3.setUnitsHomingSpeed(0.7f);
+            enemyBase3.isAlive = true;
+            enemyBase3.isStarted = true;
+            enemyBase3.isCompleted = false;
+            enemyBase3.currentHP = enemyBase3.initialHP;
+
+            
+            
+            base.setInitialValues();
+        }
+
+
 
     }
 }

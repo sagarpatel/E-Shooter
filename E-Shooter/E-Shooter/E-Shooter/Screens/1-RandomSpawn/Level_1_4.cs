@@ -22,49 +22,19 @@ namespace E_Shooter
         public Level_1_4(Game game, SpriteBatch givenSpriteBatch): base(game, givenSpriteBatch)
         {
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);
-            enemyBase1.position = new Vector2(200, 240);
-            enemyBase1.spawnInitialExpulsionSpeed = 80f;
-            enemyBase1.color = Color.Orange;
-            enemyBase1.scale = 0.6f;
-            enemyBase1.setUnitsHomingSpeed(0.75f);
-            enemyBase1.isAlive = true;
-            enemyBase1.isStarted = true;
-
             collisionList.Add(enemyBase1);
 
             enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);
-            enemyBase2.position = new Vector2(350, 200);
-            enemyBase2.spawnInitialExpulsionSpeed = 100f;
-            enemyBase2.color = Color.Orange;
-            enemyBase2.scale = 0.6f;
-            enemyBase2.setUnitsHomingSpeed(0.75f);
-            enemyBase2.isAlive = true;
-            enemyBase2.isStarted = true;
-
             collisionList.Add(enemyBase2);
 
 
             enemyBase3 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);
-            enemyBase3.position = new Vector2(350, 280);
-            enemyBase3.spawnInitialExpulsionSpeed = 80f;
-            enemyBase3.color = Color.Orange;
-            enemyBase3.scale = 0.6f;
-            enemyBase3.setUnitsHomingSpeed(0.75f);
-            enemyBase3.isAlive = true;
-            enemyBase3.isStarted = true;
-
             collisionList.Add(enemyBase3);
 
             enemyBase4 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);
-            enemyBase4.position = new Vector2(500, 240);
-            enemyBase4.spawnInitialExpulsionSpeed = 80f;
-            enemyBase4.color = Color.Orange;
-            enemyBase4.scale = 0.6f;
-            enemyBase4.setUnitsHomingSpeed(0.75f);
-            enemyBase4.isAlive = true;
-            enemyBase4.isStarted = true;
-
             collisionList.Add(enemyBase4);
+
+            setInitialValues();
 
             nextScreenType = typeof(Level_1_5);
 
@@ -119,6 +89,54 @@ namespace E_Shooter
             {
                 base.Draw(gameTime);
             }
+        }
+
+        public override void setInitialValues()
+        {
+
+            enemyBase1.position = new Vector2(200, 240);
+            enemyBase1.spawnInitialExpulsionSpeed = 80f;
+            enemyBase1.color = Color.Orange;
+            enemyBase1.scale = 0.6f;
+            enemyBase1.setUnitsHomingSpeed(0.75f);
+            enemyBase1.isAlive = true;
+            enemyBase1.isStarted = true;
+            enemyBase1.isCompleted = false;
+            enemyBase1.currentHP = enemyBase1.initialHP;
+
+
+            enemyBase2.position = new Vector2(350, 200);
+            enemyBase2.spawnInitialExpulsionSpeed = 100f;
+            enemyBase2.color = Color.Orange;
+            enemyBase2.scale = 0.6f;
+            enemyBase2.setUnitsHomingSpeed(0.75f);
+            enemyBase2.isAlive = true;
+            enemyBase2.isStarted = true;
+            enemyBase2.isCompleted = false;
+            enemyBase2.currentHP = enemyBase2.initialHP;
+
+            enemyBase3.position = new Vector2(350, 280);
+            enemyBase3.spawnInitialExpulsionSpeed = 80f;
+            enemyBase3.color = Color.Orange;
+            enemyBase3.scale = 0.6f;
+            enemyBase3.setUnitsHomingSpeed(0.75f);
+            enemyBase3.isAlive = true;
+            enemyBase3.isStarted = true;
+            enemyBase3.isCompleted = false;
+            enemyBase3.currentHP = enemyBase3.initialHP;
+           
+
+            enemyBase4.position = new Vector2(500, 240);
+            enemyBase4.spawnInitialExpulsionSpeed = 80f;
+            enemyBase4.color = Color.Orange;
+            enemyBase4.scale = 0.6f;
+            enemyBase4.setUnitsHomingSpeed(0.75f);
+            enemyBase4.isAlive = true;
+            enemyBase4.isStarted = true;
+            enemyBase4.isCompleted = false;
+            enemyBase4.currentHP = enemyBase4.initialHP;
+
+            base.setInitialValues();
         }
 
     }

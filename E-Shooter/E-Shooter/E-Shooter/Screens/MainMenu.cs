@@ -42,7 +42,7 @@ namespace E_Shooter
 
 
 
-            nextScreenType = typeof(Level_2_1);
+            nextScreenType = typeof(Level_1_1);
         }
 
 

@@ -20,26 +20,16 @@ namespace E_Shooter
         public Level_1_2(Game game, SpriteBatch givenSpriteBatch) : base(game,givenSpriteBatch)
         {
             enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 5, 0.85f);
-            enemyBase1.position = new Vector2(150, 240);
-            enemyBase1.spawnInitialExpulsionSpeed = 150f;
-            enemyBase1.color = Color.Beige;
-            enemyBase1.scale = 0.6f;
-            enemyBase1.setUnitsHomingSpeed(0.2f);
-            enemyBase1.isAlive = true;
-            enemyBase1.isStarted = true;
+            
 
             collisionList.Add(enemyBase1);
 
             enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.75f);
-            enemyBase2.position = new Vector2(450, 240);
-            enemyBase2.spawnInitialExpulsionSpeed = 100f;
-            enemyBase2.color = Color.BlanchedAlmond;
-            enemyBase2.scale = 0.6f;
-            enemyBase2.setUnitsHomingSpeed(0.8f);
-            enemyBase2.isAlive = true;
-            enemyBase2.isStarted = true;
+            
 
             collisionList.Add(enemyBase2);
+
+            setInitialValues();
 
             nextScreenType = typeof(Level_1_3);
 
@@ -85,6 +75,32 @@ namespace E_Shooter
             {
                 base.Draw(gameTime);
             }
+        }
+
+        public override void setInitialValues()
+        {
+
+            enemyBase1.position = new Vector2(150, 240);
+            enemyBase1.spawnInitialExpulsionSpeed = 150f;
+            enemyBase1.color = Color.Beige;
+            enemyBase1.scale = 0.6f;
+            enemyBase1.setUnitsHomingSpeed(0.2f);
+            enemyBase1.isAlive = true;
+            enemyBase1.isStarted = true;
+            enemyBase1.currentHP = enemyBase1.initialHP;
+            enemyBase1.isCompleted = false;
+
+            enemyBase2.position = new Vector2(450, 240);
+            enemyBase2.spawnInitialExpulsionSpeed = 100f;
+            enemyBase2.color = Color.BlanchedAlmond;
+            enemyBase2.scale = 0.6f;
+            enemyBase2.setUnitsHomingSpeed(0.8f);
+            enemyBase2.isAlive = true;
+            enemyBase2.isStarted = true;
+            enemyBase2.currentHP = enemyBase2.initialHP;
+            enemyBase2.isCompleted = false;
+            
+            base.setInitialValues();
         }
 
 
