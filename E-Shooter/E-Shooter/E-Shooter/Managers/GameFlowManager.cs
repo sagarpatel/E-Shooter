@@ -144,7 +144,7 @@ namespace E_Shooter
             int maxAngle = targetAngle + coneArc / 2;
             int minAngle = targetAngle - coneArc / 2;
             int randomAngle = rand.Next(minAngle, maxAngle);
-            Vector2 randomVector = new Vector2(0, 1);
+            Vector2 randomVector = new Vector2(1, 0);
             randomVector = Vector2.Transform(randomVector, Matrix.CreateRotationZ(MathHelper.ToRadians((float)randomAngle)));
             return randomVector;
         }

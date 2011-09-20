@@ -39,7 +39,7 @@ namespace E_Shooter
         public int currentHP;
         public int initialHP;
 
-        
+        public float speed;
 
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch):base(givenGameame)
         {
@@ -63,6 +63,8 @@ namespace E_Shooter
             currentHP = initialHP;
 
             wallBounceDampningFactor = 1f;
+
+            speed = 1.0f;
         }
 
 
@@ -152,6 +154,7 @@ namespace E_Shooter
         {
             this.position = new Vector2(0, 0);
             this.velocity = new Vector2(0, 0);
+            this.speed = 1.0f;
             this.rotation = 0f;
             this.currentHP = this.initialHP;
             this.isAlive = false;
