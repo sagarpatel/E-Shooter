@@ -88,7 +88,7 @@ namespace E_Shooter
             movingEnemyBase1.position = new Vector2(300, 240);
             movingEnemyBase1.speed = 0.25f;
             movingEnemyBase1.spawnInitialExpulsionSpeed = 400f;
-            movingEnemyBase1.spawnTargetAngle = 0;
+            movingEnemyBase1.spawnTargetAngle = 90;
             movingEnemyBase1.spawnConeArc = 45;
             movingEnemyBase1.color = Color.IndianRed;
             movingEnemyBase1.scale = 0.7f;
