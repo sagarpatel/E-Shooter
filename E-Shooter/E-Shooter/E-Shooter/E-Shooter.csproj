@@ -104,6 +104,7 @@
     <Compile Include="Screens\1-RandomSpawn\Level_1_4.cs" />
     <Compile Include="Screens\1-RandomSpawn\Level_1_5.cs" />
     <Compile Include="Screens\2-DirectedSpawn\Level_2_1.cs" />
+    <Compile Include="Screens\2-DirectedSpawn\Level_2_2.cs" />
     <Compile Include="Screens\MainMenu.cs" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
