@@ -22,13 +22,13 @@ namespace E_Shooter
 
         public Level_1_1(Game game, SpriteBatch givenSpriteBatch) : base(game, givenSpriteBatch)
         {
-            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 10,0.85f);
+            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 10,0.85f,1);
             
             collisionList.Add(enemyBase1);
 
 
 
-            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 10, 0.80f);
+            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 10, 0.80f,1);
 
             collisionList.Add(enemyBase2);
 

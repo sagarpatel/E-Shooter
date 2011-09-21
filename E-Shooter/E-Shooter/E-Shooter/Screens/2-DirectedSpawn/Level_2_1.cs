@@ -21,7 +21,7 @@ namespace E_Shooter
         {
 
 
-            movingEnemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 10, 0.75f);
+            movingEnemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 15, 0.75f,3);
 
             setInitialValues();
 
@@ -87,16 +87,17 @@ namespace E_Shooter
         {
             movingEnemyBase1.position = new Vector2(300, 240);
             movingEnemyBase1.speed = 0.25f;
-            movingEnemyBase1.spawnInitialExpulsionSpeed = 400f;
+            movingEnemyBase1.spawnInitialExpulsionSpeed = 200f;
             movingEnemyBase1.spawnTargetAngle = 90;
-            movingEnemyBase1.spawnConeArc = 45;
+            movingEnemyBase1.spawnConeArc = 120;
             movingEnemyBase1.color = Color.IndianRed;
             movingEnemyBase1.scale = 0.7f;
-            movingEnemyBase1.setUnitsHomingSpeed(0.05f);
+            movingEnemyBase1.setUnitsHomingSpeed(0.25f);
             movingEnemyBase1.isAlive = true;
             movingEnemyBase1.isStarted = true;
             movingEnemyBase1.currentHP = movingEnemyBase1.initialHP;
             movingEnemyBase1.isCompleted = false;
+            movingEnemyBase1.spawnCooldown = 400;
 
             movingEnemyBase1.velocity = new Vector2(1, 0);
             movingEnemyBase1.isWallBounce = true;

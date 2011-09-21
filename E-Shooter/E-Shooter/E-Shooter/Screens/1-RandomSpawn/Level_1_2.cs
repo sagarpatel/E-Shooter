@@ -19,12 +19,12 @@ namespace E_Shooter
 
         public Level_1_2(Game game, SpriteBatch givenSpriteBatch) : base(game,givenSpriteBatch)
         {
-            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 5, 0.85f);
+            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 5, 0.85f,1);
             
 
             collisionList.Add(enemyBase1);
 
-            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.75f);
+            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.75f,1);
             
 
             collisionList.Add(enemyBase2);

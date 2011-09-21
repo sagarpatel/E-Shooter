@@ -21,17 +21,17 @@ namespace E_Shooter
 
         public Level_1_4(Game game, SpriteBatch givenSpriteBatch): base(game, givenSpriteBatch)
         {
-            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);
+            enemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f,1);
             collisionList.Add(enemyBase1);
 
-            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);
+            enemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f,1);
             collisionList.Add(enemyBase2);
 
 
-            enemyBase3 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);
+            enemyBase3 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f,1);
             collisionList.Add(enemyBase3);
 
-            enemyBase4 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f);
+            enemyBase4 = new EnemyBaseObject(game, givenSpriteBatch, 4, 0.8f,1);
             collisionList.Add(enemyBase4);
 
             setInitialValues();

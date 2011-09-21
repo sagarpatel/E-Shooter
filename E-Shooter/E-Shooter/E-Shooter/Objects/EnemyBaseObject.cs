@@ -27,9 +27,11 @@ namespace E_Shooter
         public int spawnTargetAngle;
         public int spawnConeArc;
 
+        public int spawnBatchCount;
+
         public bool isStarted;
 
-        public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch, int maximumUnitCount, float wbDampFact):base(game, givenSpriteBatch)
+        public EnemyBaseObject(Game game, SpriteBatch givenSpriteBatch, int maximumUnitCount, float wbDampFact, int spawnBC):base(game, givenSpriteBatch)
         {
             maxUnits = maximumUnitCount;
             spawnCooldown = 200;
@@ -58,6 +60,8 @@ namespace E_Shooter
 
             spawnTargetAngle = 0;
             spawnConeArc = 360;
+
+            spawnBatchCount = spawnBC;
 
             isStarted = false;
         }
@@ -131,6 +135,8 @@ namespace E_Shooter
 
         public void spawnUnit()
         {
+            int spawnCounter = 0;
+
             for (int i = 0; i < maxUnits; ++i)
             {
                 if (unitsArray[i].isAlive == false)
@@ -139,7 +145,13 @@ namespace E_Shooter
                     unitsArray[i].velocity = GameFlowManager.sharedGameFlowManager.getRandomVector(spawnTargetAngle, spawnConeArc) * spawnInitialExpulsionSpeed;
                     unitsArray[i].isAlive = true;
                     unitsArray[i].isHoming = true;
-                    break;
+
+                    spawnCounter++;
+
+                    if (spawnCounter >= spawnBatchCount)
+                        break;
+                    else
+                        continue;
                 }
 
             }

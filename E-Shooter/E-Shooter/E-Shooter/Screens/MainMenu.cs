@@ -20,13 +20,13 @@ namespace E_Shooter
 
         public MainMenu(Game game, SpriteBatch givenSpriteBatch):base(game,givenSpriteBatch)
         {
-            selectorBase1 = new EnemyBaseObject(game, givenSpriteBatch,0,1);
+            selectorBase1 = new EnemyBaseObject(game, givenSpriteBatch,0,1,0);
             //enemyBase1.position = new Vector2(400, 240);
             //enemyBase1.spawnInitialExpulsionSpeed = 100f;
             //enemyBase1.isAlive = true;
             //enemyBase1.isStarted = true;
 
-            selectorBase2 = new EnemyBaseObject(game, givenSpriteBatch, 0, 1);
+            selectorBase2 = new EnemyBaseObject(game, givenSpriteBatch, 0, 1,0);
 
             setInitialValues();
             
