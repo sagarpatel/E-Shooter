@@ -32,7 +32,7 @@ namespace E_Shooter
         public fireTypes currentFireType;
 
         public int fireCooldown;
-        public int fireRateCounter;
+        protected int fireRateCounter;
         public float speed;
 
         public Color originalColor;

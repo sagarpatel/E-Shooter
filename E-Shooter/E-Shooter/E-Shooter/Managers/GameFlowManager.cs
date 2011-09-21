@@ -64,7 +64,7 @@ namespace E_Shooter
         {
 
             player1 = new PlayerObject(myGame, mySpriteBatch);
-            player1.scale = 0.75f;
+            player1.scale = 1f;
             player1.position = new Vector2(400, 450);
             myGame.Components.Add(player1);
 

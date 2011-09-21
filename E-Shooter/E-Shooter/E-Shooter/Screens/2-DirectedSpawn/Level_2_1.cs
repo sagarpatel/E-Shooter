@@ -101,7 +101,7 @@ namespace E_Shooter
             movingEnemyBase1.spawnConeArc = 120;
             movingEnemyBase1.color = Color.IndianRed;
             movingEnemyBase1.scale = 0.7f;
-            movingEnemyBase1.setUnitsHomingSpeed(0.25f);
+            movingEnemyBase1.setUnitsHomingSpeed(0.5f);
             movingEnemyBase1.isAlive = true;
             movingEnemyBase1.isStarted = true;
             movingEnemyBase1.initialHP = 200;
