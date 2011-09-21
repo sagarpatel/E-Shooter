@@ -17,11 +17,15 @@ namespace E_Shooter
 
         public EnemyBaseObject movingEnemyBase1;
 
+        public int originalTargetAngle;
+
         public Level_2_1(Game game, SpriteBatch givenSpriteBatch) : base(game,givenSpriteBatch)
         {
 
 
             movingEnemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 15, 0.75f,3);
+
+            originalTargetAngle = 90;
 
             setInitialValues();
 
@@ -64,6 +68,11 @@ namespace E_Shooter
                 updateMovingBasePV(gameTime, movingEnemyBase1);
             }
 
+            if (movingEnemyBase1.velocity.X > 0)
+                movingEnemyBase1.spawnTargetAngle = originalTargetAngle;
+            else
+                movingEnemyBase1.spawnTargetAngle = -originalTargetAngle;
+
             base.Update(gameTime);
         }
 
@@ -85,16 +94,17 @@ namespace E_Shooter
 
         public override void setInitialValues()
         {
-            movingEnemyBase1.position = new Vector2(300, 240);
-            movingEnemyBase1.speed = 0.25f;
+            movingEnemyBase1.position = new Vector2(100, 240);
+            movingEnemyBase1.speed = 0.15f;
             movingEnemyBase1.spawnInitialExpulsionSpeed = 200f;
-            movingEnemyBase1.spawnTargetAngle = 90;
+            movingEnemyBase1.spawnTargetAngle = originalTargetAngle;
             movingEnemyBase1.spawnConeArc = 120;
             movingEnemyBase1.color = Color.IndianRed;
             movingEnemyBase1.scale = 0.7f;
             movingEnemyBase1.setUnitsHomingSpeed(0.25f);
             movingEnemyBase1.isAlive = true;
             movingEnemyBase1.isStarted = true;
+            movingEnemyBase1.initialHP = 200;
             movingEnemyBase1.currentHP = movingEnemyBase1.initialHP;
             movingEnemyBase1.isCompleted = false;
             movingEnemyBase1.spawnCooldown = 400;
