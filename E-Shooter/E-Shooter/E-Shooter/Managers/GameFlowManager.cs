@@ -32,7 +32,7 @@ namespace E_Shooter
         //targeted spawning levels begin
         public Level_2_1 level_2_1;
         public Level_2_2 level_2_2;
-        
+        public Level_2_3 level_2_3;
 
 
         List<ScreenAbstract> screenList;
@@ -67,6 +67,8 @@ namespace E_Shooter
             player1 = new PlayerObject(myGame, mySpriteBatch);
             player1.scale = 1f;
             player1.position = new Vector2(400, 450);
+            player1.initialHP = 200;
+            player1.currentHP = player1.initialHP;
             myGame.Components.Add(player1);
 
             mainMenu = new MainMenu(myGame, mySpriteBatch);
@@ -102,6 +104,11 @@ namespace E_Shooter
             level_2_2.isActive = false;
             screenList.Add(level_2_2);
 
+            level_2_3 = new Level_2_3(myGame, mySpriteBatch);
+            level_2_3.isActive = false;
+            screenList.Add(level_2_3);
+
+            
             currentScreen = mainMenu;
            
 
