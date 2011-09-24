@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace E_Shooter
 {
-    public class Level_2_3 : ScreenAbstract
+    public class Level_2_4 : ScreenAbstract
     {
 
         public EnemyBaseObject movingEnemyBase1;
@@ -21,7 +21,8 @@ namespace E_Shooter
         public int originalTargetAngle1;
         public int originalTargetAngle2;
 
-        public Level_2_3(Game game, SpriteBatch givenSpriteBatch): base(game, givenSpriteBatch)
+        public Level_2_4(Game game, SpriteBatch givenSpriteBatch)
+            : base(game, givenSpriteBatch)
         {
 
 
@@ -37,7 +38,7 @@ namespace E_Shooter
             collisionList.Add(movingEnemyBase2);
 
 
-            nextScreenType = typeof(Level_2_4);
+            nextScreenType = typeof(MainMenu);
 
         }
 
@@ -74,20 +75,20 @@ namespace E_Shooter
 
             if (movingEnemyBase1.isAlive)
                 updateMovingBasePV(gameTime, movingEnemyBase1);
-            
+
             if (movingEnemyBase2.isAlive)
                 updateMovingBasePV(gameTime, movingEnemyBase2);
 
             if (movingEnemyBase1.velocity.X > 0)
-                movingEnemyBase1.spawnTargetAngle = originalTargetAngle1;
+                movingEnemyBase1.spawnTargetAngle = 0;
             else
-                movingEnemyBase1.spawnTargetAngle = -originalTargetAngle1;
+                movingEnemyBase1.spawnTargetAngle = 180;
 
 
             if (movingEnemyBase2.velocity.X > 0)
-                movingEnemyBase2.spawnTargetAngle = originalTargetAngle1;
+                movingEnemyBase2.spawnTargetAngle = 180;
             else
-                movingEnemyBase2.spawnTargetAngle = -originalTargetAngle1;
+                movingEnemyBase2.spawnTargetAngle = 0;
 
 
             base.Update(gameTime);
@@ -111,7 +112,7 @@ namespace E_Shooter
 
         public override void setInitialValues()
         {
-            movingEnemyBase1.position = new Vector2(100, 150);
+            movingEnemyBase1.position = new Vector2(200, 100);
             movingEnemyBase1.speed = 0.15f;
             movingEnemyBase1.spawnInitialExpulsionSpeed = 200f;
             movingEnemyBase1.spawnTargetAngle = originalTargetAngle1;
@@ -126,11 +127,11 @@ namespace E_Shooter
             movingEnemyBase1.isCompleted = false;
             movingEnemyBase1.spawnCooldown = 400;
 
-            movingEnemyBase1.velocity = new Vector2(1, 0);
+            movingEnemyBase1.velocity = new Vector2(0, 1);
             movingEnemyBase1.isWallBounce = true;
 
 
-            movingEnemyBase2.position = new Vector2(700, 300);
+            movingEnemyBase2.position = new Vector2(600, 380);
             movingEnemyBase2.speed = 0.15f;
             movingEnemyBase2.spawnInitialExpulsionSpeed = 200f;
             movingEnemyBase2.spawnTargetAngle = originalTargetAngle2;
@@ -145,7 +146,7 @@ namespace E_Shooter
             movingEnemyBase2.isCompleted = false;
             movingEnemyBase2.spawnCooldown = 400;
 
-            movingEnemyBase2.velocity = new Vector2(-1, 0);
+            movingEnemyBase2.velocity = new Vector2(0, -1);
             movingEnemyBase2.isWallBounce = true;
 
 

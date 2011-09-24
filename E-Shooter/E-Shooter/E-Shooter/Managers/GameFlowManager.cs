@@ -33,6 +33,7 @@ namespace E_Shooter
         public Level_2_1 level_2_1;
         public Level_2_2 level_2_2;
         public Level_2_3 level_2_3;
+        public Level_2_4 level_2_4;
 
 
         List<ScreenAbstract> screenList;
@@ -107,6 +108,10 @@ namespace E_Shooter
             level_2_3 = new Level_2_3(myGame, mySpriteBatch);
             level_2_3.isActive = false;
             screenList.Add(level_2_3);
+
+            level_2_4 = new Level_2_4(myGame, mySpriteBatch);
+            level_2_4.isActive = false;
+            screenList.Add(level_2_4);
 
             
             currentScreen = mainMenu;
