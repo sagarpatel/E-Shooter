@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace E_Shooter
 {
-    public class Level_2_4 : ScreenAbstract
+    public class Level_2_5 : ScreenAbstract
     {
 
         public EnemyBaseObject movingEnemyBase1;
@@ -21,10 +21,8 @@ namespace E_Shooter
         public int originalTargetAngle1;
         public int originalTargetAngle2;
 
-        public Level_2_4(Game game, SpriteBatch givenSpriteBatch): base(game, givenSpriteBatch)
+        public Level_2_5(Game game, SpriteBatch givenSpriteBatch): base(game, givenSpriteBatch)
         {
-
-
             movingEnemyBase1 = new EnemyBaseObject(game, givenSpriteBatch, 10, 0.5f, 3);
             movingEnemyBase2 = new EnemyBaseObject(game, givenSpriteBatch, 10, 0.5f, 3);
 
@@ -37,7 +35,7 @@ namespace E_Shooter
             collisionList.Add(movingEnemyBase2);
 
 
-            nextScreenType = typeof(Level_2_5);
+            nextScreenType = typeof(MainMenu);
 
         }
 
@@ -111,7 +109,7 @@ namespace E_Shooter
 
         public override void setInitialValues()
         {
-            movingEnemyBase1.position = new Vector2(200, 100);
+            movingEnemyBase1.position = new Vector2(100, 240);
             movingEnemyBase1.speed = 0.15f;
             movingEnemyBase1.spawnInitialExpulsionSpeed = 200f;
             movingEnemyBase1.spawnTargetAngle = originalTargetAngle1;
@@ -126,11 +124,11 @@ namespace E_Shooter
             movingEnemyBase1.isCompleted = false;
             movingEnemyBase1.spawnCooldown = 400;
 
-            movingEnemyBase1.velocity = new Vector2(0, 1);
+            movingEnemyBase1.velocity = new Vector2(1, 0);
             movingEnemyBase1.isWallBounce = true;
 
 
-            movingEnemyBase2.position = new Vector2(600, 380);
+            movingEnemyBase2.position = new Vector2(400, 100);
             movingEnemyBase2.speed = 0.15f;
             movingEnemyBase2.spawnInitialExpulsionSpeed = 200f;
             movingEnemyBase2.spawnTargetAngle = originalTargetAngle2;
@@ -145,7 +143,7 @@ namespace E_Shooter
             movingEnemyBase2.isCompleted = false;
             movingEnemyBase2.spawnCooldown = 400;
 
-            movingEnemyBase2.velocity = new Vector2(0, -1);
+            movingEnemyBase2.velocity = new Vector2(0, 1);
             movingEnemyBase2.isWallBounce = true;
 
 
