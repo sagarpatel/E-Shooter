@@ -84,10 +84,10 @@ namespace E_Shooter
                 movingEnemyBase1.spawnTargetAngle = -originalTargetAngle1;
 
 
-            if (movingEnemyBase2.velocity.Y > 0)
-                movingEnemyBase2.spawnTargetAngle = 0;
+            if (movingEnemyBase2.velocity.X > 0)
+                movingEnemyBase2.spawnTargetAngle = -originalTargetAngle1;
             else
-                movingEnemyBase2.spawnTargetAngle = 180;
+                movingEnemyBase2.spawnTargetAngle = originalTargetAngle1;
 
 
             base.Update(gameTime);
@@ -111,7 +111,7 @@ namespace E_Shooter
 
         public override void setInitialValues()
         {
-            movingEnemyBase1.position = new Vector2(100, 240);
+            movingEnemyBase1.position = new Vector2(100, 150);
             movingEnemyBase1.speed = 0.15f;
             movingEnemyBase1.spawnInitialExpulsionSpeed = 200f;
             movingEnemyBase1.spawnTargetAngle = originalTargetAngle1;
@@ -130,7 +130,7 @@ namespace E_Shooter
             movingEnemyBase1.isWallBounce = true;
 
 
-            movingEnemyBase2.position = new Vector2(400, 100);
+            movingEnemyBase2.position = new Vector2(700, 300);
             movingEnemyBase2.speed = 0.15f;
             movingEnemyBase2.spawnInitialExpulsionSpeed = 200f;
             movingEnemyBase2.spawnTargetAngle = originalTargetAngle2;
@@ -145,7 +145,7 @@ namespace E_Shooter
             movingEnemyBase2.isCompleted = false;
             movingEnemyBase2.spawnCooldown = 400;
 
-            movingEnemyBase2.velocity = new Vector2(0, 1);
+            movingEnemyBase2.velocity = new Vector2(-1, 0);
             movingEnemyBase2.isWallBounce = true;
 
 
