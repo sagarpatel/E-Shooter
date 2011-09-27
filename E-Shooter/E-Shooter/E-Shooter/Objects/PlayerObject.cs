@@ -45,7 +45,7 @@ namespace E_Shooter
 
 
             simpleWeapon = new SimpleWeapon(game, spriteBatch, 50);
-            simpleWeapon.fireCooldown = 75;
+            //simpleWeapon.fireCooldown = 75;
 
 
             currentWeaponIndex = 0;

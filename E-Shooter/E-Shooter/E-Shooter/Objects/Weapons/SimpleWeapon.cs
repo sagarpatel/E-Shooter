@@ -37,7 +37,7 @@ namespace E_Shooter
 
             currentFireType = fireTypes.Single;
             fireCooldown = 100;
-            speed = 0.5f;
+            speed = 0.4f;
         }
 
 
