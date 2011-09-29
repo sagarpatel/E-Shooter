@@ -26,6 +26,7 @@ namespace E_Shooter
 
         public int spawnTargetAngle;
         public int spawnConeArc;
+        public Vector2 spawnTargetVector;
 
         public int spawnBatchCount;
 
@@ -60,10 +61,12 @@ namespace E_Shooter
 
             spawnTargetAngle = 0;
             spawnConeArc = 360;
+            spawnTargetVector = new Vector2(0, 0);
 
             spawnBatchCount = spawnBC;
 
             isStarted = false;
+
         }
 
 
@@ -142,9 +145,13 @@ namespace E_Shooter
                 if (unitsArray[i].isAlive == false)
                 {
                     unitsArray[i].position = this.position;
-                    unitsArray[i].velocity = GameFlowManager.sharedGameFlowManager.getRandomVector(spawnTargetAngle, spawnConeArc) * spawnInitialExpulsionSpeed;
                     unitsArray[i].isAlive = true;
                     unitsArray[i].isHoming = true;
+
+                    if (this.spawnTargetVector.Length() == 0)
+                        unitsArray[i].velocity = GameFlowManager.sharedGameFlowManager.getRandomVector(spawnTargetAngle, spawnConeArc) * spawnInitialExpulsionSpeed;
+                    else
+                        unitsArray[i].velocity = spawnTargetVector * spawnInitialExpulsionSpeed;
 
                     spawnCounter++;
 

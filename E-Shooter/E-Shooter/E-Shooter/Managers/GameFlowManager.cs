@@ -36,6 +36,9 @@ namespace E_Shooter
         public Level_2_4 level_2_4;
         public Level_2_5 level_2_5;
 
+        //hmoing bases begin
+        public Level_3_1 level_3_1;
+
 
         List<ScreenAbstract> screenList;
         ScreenAbstract currentScreen;
@@ -67,10 +70,7 @@ namespace E_Shooter
         {
 
             player1 = new PlayerObject(myGame, mySpriteBatch);
-            player1.scale = 1f;
-            player1.position = new Vector2(400, 450);
-            player1.initialHP = 200;
-            player1.currentHP = player1.initialHP;
+            
             myGame.Components.Add(player1);
 
             mainMenu = new MainMenu(myGame, mySpriteBatch);
@@ -118,7 +118,14 @@ namespace E_Shooter
             level_2_5 = new Level_2_5(myGame, mySpriteBatch);
             level_2_5.isActive = false;
             screenList.Add(level_2_5);
-            
+
+
+            level_3_1 = new Level_3_1(myGame, mySpriteBatch);
+            level_3_1.isActive = false;
+            screenList.Add(level_3_1);
+
+            setInitialValues();
+
             currentScreen = mainMenu;
            
 
@@ -127,6 +134,7 @@ namespace E_Shooter
 
         public override void Update(GameTime gameTime)
         {
+ 
 
             if ( currentScreen.isComplete == true)
             {
@@ -147,6 +155,20 @@ namespace E_Shooter
                 }
 
                 
+            }
+
+
+            //  erset to main menu if player dies
+            if (player1.isAlive == false)
+            {
+                currentScreen.isActive = false;
+                currentScreen.isComplete = true;
+                myGame.Components.Remove(currentScreen);
+                mainMenu.isActive = true;
+                mainMenu.setInitialValues();
+                myGame.Components.Add(mainMenu);
+                currentScreen = mainMenu;
+                setInitialValues();
             }
 
             base.Update(gameTime);
@@ -170,6 +192,17 @@ namespace E_Shooter
             randomVector = Vector2.Transform(randomVector, Matrix.CreateRotationZ(MathHelper.ToRadians((float)randomAngle)));
             return randomVector;
         }
+
+        public void setInitialValues()
+        {
+            player1.scale = 1f;
+            player1.position = new Vector2(400, 450);
+            player1.initialHP = 200;
+            player1.currentHP = player1.initialHP;
+            player1.isAlive = true;
+
+        }
+
 
     }
 }

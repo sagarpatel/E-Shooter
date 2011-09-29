@@ -71,6 +71,13 @@ namespace E_Shooter
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            
+            if (this.isComplete)
+            {
+                foreach (GameObjectAbstract gobj in collisionList)
+                    gobj.isAlive = false;
+            }
+
         }
 
         public override void Draw(GameTime gameTime)

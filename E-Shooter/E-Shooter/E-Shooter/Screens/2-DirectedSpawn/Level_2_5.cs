@@ -35,7 +35,7 @@ namespace E_Shooter
             collisionList.Add(movingEnemyBase2);
 
 
-            nextScreenType = typeof(MainMenu);
+            nextScreenType = typeof(Level_3_1);
 
         }
 
