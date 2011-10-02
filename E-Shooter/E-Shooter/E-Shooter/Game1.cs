@@ -53,7 +53,8 @@ namespace E_Shooter
 
             // TODO: Add texture to texture manager here
             TextureManager.sharedTextureManager.addTexture("Player1Sprite", Content.Load<Texture2D>("Sprites/FullCircle1"));
-
+            TextureManager.sharedTextureManager.addTexture("EnemyUnit1", Content.Load<Texture2D>("Sprites/tempTri3"));
+            
 
             InputManager.myGame = this;
 

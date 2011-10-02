@@ -24,7 +24,7 @@ namespace E_Shooter
         public EnemyUnitObject(Game game, SpriteBatch givenSpriteb):base(game, givenSpriteb)
         {
 
-            texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
+            texture = TextureManager.sharedTextureManager.getTexture("EnemyUnit1");
             
             position = new Vector2(-100, -100);
             color = Color.Yellow;
@@ -32,6 +32,7 @@ namespace E_Shooter
             isHoming = false;
             initialHP = 10;
             currentHP = initialHP;
+            scale = 0.75f;
 
             damageToPlayer = 10;
 
