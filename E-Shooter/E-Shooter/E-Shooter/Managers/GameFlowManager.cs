@@ -193,6 +193,20 @@ namespace E_Shooter
             return randomVector;
         }
 
+        //attempting to get angle branchlessly
+        public float getAngleFromVector(Vector2 givenVector)
+        {
+            Vector2 givenVect = givenVector;
+            Vector2 refVect = new Vector2(1, 0); //lies on x-axis
+            float angle = 0;
+            givenVect.Normalize();
+            //angle = (float)Math.Acos((double)Vector2.Dot(givenVect, refVect));
+
+            angle = (float)Math.Atan2((double)givenVect.X,(double)givenVect.Y);
+            
+            return angle;
+
+        }
         public void setInitialValues()
         {
             player1.scale = 1f;

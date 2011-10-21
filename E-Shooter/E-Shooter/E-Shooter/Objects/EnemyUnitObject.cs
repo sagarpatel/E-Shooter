@@ -50,7 +50,7 @@ namespace E_Shooter
             if (isAlive)
             {
                 updatePV(gameTime);
-
+                updateRotation();
 
                 if(GameFlowManager.sharedGameFlowManager.player1.isCollidingOtherObject(this.getRect()))
                 {
@@ -85,6 +85,22 @@ namespace E_Shooter
                 position += velocity * gameTime.ElapsedGameTime.Milliseconds/ 1000;
             }
 
+        }
+
+        public void updateRotation()
+        {
+            if (this.isHoming)
+            {
+                Vector2 toPlayer = this.velocity; // doesn't work due to inverted Y axis
+                // need to compensate for inverted Y axis in vector calculation
+                toPlayer.Y = -toPlayer.Y;
+                
+                
+                this.rotation = GameFlowManager.sharedGameFlowManager.getAngleFromVector(toPlayer);
+
+                int ang = (int) MathHelper.ToDegrees(this.rotation);
+                int s = ang;
+            }
         }
     }
 }
