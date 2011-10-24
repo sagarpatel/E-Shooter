@@ -153,6 +153,8 @@ namespace E_Shooter
                     else
                         unitsArray[i].velocity = spawnTargetVector * spawnInitialExpulsionSpeed;
 
+                    unitsArray[i].rotation = GameFlowManager.sharedGameFlowManager.getAngleFromVector(unitsArray[i].velocity);
+
                     spawnCounter++;
 
                     if (spawnCounter >= spawnBatchCount)
