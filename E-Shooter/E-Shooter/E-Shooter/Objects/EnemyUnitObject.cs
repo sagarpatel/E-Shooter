@@ -32,7 +32,7 @@ namespace E_Shooter
             isHoming = false;
             initialHP = 10;
             currentHP = initialHP;
-            scale = 0.75f;
+            scale = 0.2f;
 
             damageToPlayer = 10;
 

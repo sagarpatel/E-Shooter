@@ -50,7 +50,7 @@ namespace E_Shooter
                 unitsArray[i].position = this.position;
                 unitsArray[i].isHoming = true;
                 //  unitsArray[i].homingSpeed = 0.05f;
-                unitsArray[i].scale = 0.4f;
+            
                 unitsArray[i].wallBounceDampningFactor = wbDampFact;
                 
                 Game.Components.Add(unitsArray[i]);
@@ -66,6 +66,8 @@ namespace E_Shooter
             spawnBatchCount = spawnBC;
 
             isStarted = false;
+
+            scale = 0.5f;
 
         }
 

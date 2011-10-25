@@ -26,7 +26,7 @@ namespace E_Shooter
         protected override void LoadContent()
         {
             texture = TextureManager.sharedTextureManager.getTexture("Player1Sprite");
-            scale = 0.2f;
+            scale = 0.1f;
             color = Color.LawnGreen;
 
             isWallBounce = false;
